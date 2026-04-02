@@ -1,4 +1,5 @@
-# Claude Project Instructions
+# EY Vocal Homepage — Claude 사용 지침서
+@prompts/common.md
 
 ## Obsidian development-projects structure
 

@@ -23,7 +23,7 @@
   /* ---- Typography ---- */
   --font-primary: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont,
     "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
-  --font-display: "Georgia", serif;
+  --font-display: "Pretendard Variable", Pretendard, sans-serif;
 
   --text-display:  clamp(2.25rem, 5vw, 3.5rem);
   --text-h1:       clamp(1.75rem, 3.5vw, 2.5rem);

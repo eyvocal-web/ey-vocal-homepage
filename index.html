@@ -40,12 +40,8 @@
   }
   </script>
 
-  <!-- Pretendard Font -->
-  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-
-
   <!-- Styles -->
+  <link rel="stylesheet" href="css/pretendard.css">
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/variables.css">
   <link rel="stylesheet" href="css/global.css">
@@ -494,11 +490,11 @@
         </div>
 
         <div class="contact-cta__actions reveal">
-          <a href="https://open.kakao.com/o/seso1YLg" class="btn btn--primary" aria-label="카카오톡으로 상담하기" target="_blank" rel="noopener noreferrer">
+          <a href="https://open.kakao.com/o/seso1YLg" class="btn btn--primary" aria-label="지금 바로 상담하기" target="_blank" rel="noopener noreferrer">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
               <path d="M12 3C6.48 3 2 6.58 2 10.9c0 2.78 1.86 5.22 4.66 6.6l-.96 3.56c-.07.25.2.46.42.33l4.17-2.78c.56.07 1.13.1 1.71.1 5.52 0 10-3.58 10-7.9S17.52 3 12 3z"/>
             </svg>
-            카카오톡으로 상담하기
+            지금 바로 상담하기
           </a>
           <a href="tel:0507-1377-4624" class="contact-cta__phone" aria-label="전화로 상담하기">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
@@ -507,50 +503,6 @@
             0507-1377-4624
           </a>
         </div>
-
-        <form class="trial-form reveal" id="trial-form">
-          <div class="trial-form__header">
-            <h3>체험레슨 예약 요청</h3>
-            <p>희망 정보를 남기면 카카오톡 상담으로 바로 이어집니다.</p>
-          </div>
-          <div class="trial-form__grid">
-            <label class="trial-form__field">
-              <span>이름</span>
-              <input type="text" id="trial-name" name="name" placeholder="이름을 입력해 주세요" required>
-            </label>
-            <label class="trial-form__field">
-              <span>연락처</span>
-              <input type="tel" id="trial-phone" name="phone" placeholder="010-0000-0000" required>
-            </label>
-            <label class="trial-form__field">
-              <span>희망 날짜</span>
-              <input type="date" id="trial-date" name="date">
-            </label>
-            <label class="trial-form__field">
-              <span>희망 시간</span>
-              <input type="time" id="trial-time" name="time">
-            </label>
-            <label class="trial-form__field trial-form__field--full">
-              <span>레슨 목적</span>
-              <select id="trial-purpose" name="purpose">
-                <option value="취미">취미</option>
-                <option value="입시">입시</option>
-                <option value="축가">축가</option>
-                <option value="오디션">오디션</option>
-                <option value="기타">기타</option>
-              </select>
-            </label>
-            <label class="trial-form__field trial-form__field--full">
-              <span>남기실 말씀</span>
-              <textarea id="trial-note" name="note" rows="4" placeholder="편한 시간대나 현재 고민을 적어 주세요"></textarea>
-            </label>
-          </div>
-          <div class="trial-form__actions">
-            <button type="submit" class="btn btn--primary">예약 요청 내용 복사 후 카카오톡 열기</button>
-            <p class="trial-form__hint">버튼을 누르면 예약 요청 문구가 복사되고, 카카오톡 상담창이 새 창으로 열립니다.</p>
-            <p class="trial-form__status" id="trial-form-status" aria-live="polite"></p>
-          </div>
-        </form>
 
         <p class="contact-cta__hours reveal">
           운영시간: 평일 10:00 ~ 21:00 · 토요일 10:00 ~ 18:00 · 일요일 휴무
@@ -611,6 +563,6 @@
   </div>
 
   <!-- Scripts -->
-  <script src="js/main.js"></script>
+  <script src="js/main.js" defer></script>
 </body>
 </html>

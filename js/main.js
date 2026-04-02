@@ -15,7 +15,6 @@
     initInstructorToggle();
     initFloatingCTA();
     initLightbox();
-    initTrialForm();
 
     var yearEl = document.getElementById('current-year');
     if (yearEl) yearEl.textContent = new Date().getFullYear();
@@ -203,64 +202,4 @@
     });
   }
 
-  function initTrialForm() {
-    var form = document.getElementById('trial-form');
-    if (!form) return;
-
-    var status = document.getElementById('trial-form-status');
-    var kakaoUrl = 'https://open.kakao.com/o/seso1YLg';
-
-    form.addEventListener('submit', async function (e) {
-      e.preventDefault();
-
-      var nameEl = document.getElementById('trial-name');
-      var phoneEl = document.getElementById('trial-phone');
-      var name = nameEl.value.trim();
-      var phone = phoneEl.value.trim();
-      var date = document.getElementById('trial-date').value.trim();
-      var time = document.getElementById('trial-time').value.trim();
-      var purpose = document.getElementById('trial-purpose').value;
-      var note = document.getElementById('trial-note').value.trim();
-
-      var nameField = nameEl.closest('.trial-form__field');
-      var phoneField = phoneEl.closest('.trial-form__field');
-      nameField.classList.remove('is-error');
-      phoneField.classList.remove('is-error');
-
-      if (!name || !phone) {
-        if (!name) nameField.classList.add('is-error');
-        if (!phone) phoneField.classList.add('is-error');
-        status.textContent = '이름과 연락처를 먼저 입력해 주세요.';
-        status.className = 'trial-form__status is-error';
-        return;
-      }
-
-      var lines = [
-        '[체험레슨 예약 요청]',
-        '이름: ' + name,
-        '연락처: ' + phone,
-        '희망 날짜: ' + (date || '미정'),
-        '희망 시간: ' + (time || '미정'),
-        '레슨 목적: ' + purpose,
-        '남기실 말씀: ' + (note || '없음')
-      ];
-      var message = lines.join('\n');
-
-      try {
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-          await navigator.clipboard.writeText(message);
-          status.textContent = '예약 요청 내용이 복사되었습니다. 열리는 카카오톡 창에 붙여넣어 보내 주세요.';
-          status.className = 'trial-form__status is-success';
-        } else {
-          status.textContent = '자동 복사가 지원되지 않아 직접 복사해 주세요.';
-          status.className = 'trial-form__status is-error';
-        }
-      } catch (error) {
-        status.textContent = '복사 권한이 없어 직접 복사해 주세요.';
-        status.className = 'trial-form__status is-error';
-      }
-
-      window.open(kakaoUrl, '_blank', 'noopener');
-    });
-  }
 })();
