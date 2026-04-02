@@ -18,7 +18,7 @@
 }
 
 .nav.is-scrolled {
-  background: rgba(250, 246, 240, 0.95);
+  background: var(--color-cream-glass);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   box-shadow: var(--shadow-sm);
@@ -117,7 +117,7 @@
 .nav__mobile {
   position: fixed;
   inset: 0;
-  background: rgba(250, 246, 240, 0.98);
+  background: var(--color-cream-glass-strong);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   display: flex;
@@ -232,7 +232,7 @@
 
 .hero__subtitle {
   font-size: clamp(1rem, 2vw, 1.25rem);
-  color: rgba(255, 255, 255, 0.75);
+  color: var(--color-white-75);
   line-height: var(--leading-relaxed);
   margin-bottom: var(--space-10);
   opacity: 0;
@@ -268,7 +268,7 @@
 .hero__scroll-indicator {
   width: 24px;
   height: 40px;
-  border: 2px solid rgba(255, 255, 255, 0.3);
+  border: 2px solid var(--color-white-30);
   border-radius: 12px;
   position: relative;
 }
@@ -281,7 +281,7 @@
   width: 4px;
   height: 8px;
   margin-left: -2px;
-  background: rgba(255, 255, 255, 0.5);
+  background: var(--color-white-50);
   border-radius: 2px;
   animation: scrollBounce 1.8s ease-in-out infinite;
 }
@@ -395,7 +395,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  border: 1px solid rgba(200, 169, 110, 0.2);
+  border: 1px solid var(--color-gold-20);
   border-radius: var(--radius-md);
   pointer-events: none;
 }
@@ -702,7 +702,7 @@
   position: fixed;
   inset: 0;
   z-index: 200;
-  background: rgba(26, 26, 46, 0.92);
+  background: var(--color-charcoal-overlay);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -727,13 +727,13 @@
   justify-content: center;
   color: var(--color-white);
   font-size: 1.5rem;
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--color-white-10);
   border-radius: var(--radius-full);
   transition: background var(--duration-fast);
 }
 
 .lightbox__close:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: var(--color-white-20);
 }
 
 .lightbox__img {
@@ -846,7 +846,7 @@
 }
 
 .contact-cta__subtitle {
-  color: rgba(255, 255, 255, 0.65);
+  color: var(--color-white-65);
   margin-bottom: var(--space-10);
   max-width: 480px;
   margin-inline: auto;
@@ -858,7 +858,7 @@
   flex-direction: column;
   align-items: center;
   gap: var(--space-4);
-  margin-bottom: var(--space-8);
+  margin-bottom: var(--space-6);
 }
 
 .contact-cta__phone {
@@ -877,7 +877,7 @@
 
 .contact-cta__hours {
   font-size: var(--text-small);
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--color-white-50);
   line-height: var(--leading-relaxed);
 }
 
@@ -885,6 +885,7 @@
   .contact-cta__actions {
     flex-direction: row;
     justify-content: center;
+    flex-wrap: wrap;
   }
 }
 
@@ -893,7 +894,7 @@
    ============================================ */
 .footer {
   background: var(--color-charcoal);
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--color-white-50);
   padding-block: var(--space-12);
   font-size: var(--text-small);
 }
@@ -931,8 +932,8 @@
   align-items: center;
   justify-content: center;
   border-radius: var(--radius-full);
-  background: rgba(255, 255, 255, 0.08);
-  color: rgba(255, 255, 255, 0.6);
+  background: var(--color-white-08);
+  color: var(--color-white-60);
   transition: all var(--duration-fast);
 }
 
@@ -948,7 +949,7 @@
 
 .footer__copyright {
   padding-top: var(--space-6);
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid var(--color-white-08);
   font-size: var(--text-xs);
 }
 
@@ -1012,4 +1013,3 @@
     bottom: var(--space-8);
   }
 }
-

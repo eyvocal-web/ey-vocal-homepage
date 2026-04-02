@@ -2,6 +2,14 @@
    Design Tokens — EY보컬스튜디오
    ============================================ */
 
+@font-face {
+  font-family: "Pretendard";
+  src: url("../assets/fonts/PretendardVariable.woff2") format("woff2-variations");
+  font-weight: 45 920;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   /* ---- Colors ---- */
   --color-charcoal:    #1A1A2E;
@@ -19,11 +27,22 @@
   --color-error:       #C45B5B;
   --color-kakao:       #FEE500;
   --color-kakao-text:  #3C1E1E;
+  --color-cream-glass: rgba(250, 246, 240, 0.95);
+  --color-cream-glass-strong: rgba(250, 246, 240, 0.98);
+  --color-charcoal-overlay: rgba(26, 26, 46, 0.92);
+  --color-gold-20: rgba(200, 169, 110, 0.2);
+  --color-white-08: rgba(255, 255, 255, 0.08);
+  --color-white-10: rgba(255, 255, 255, 0.1);
+  --color-white-20: rgba(255, 255, 255, 0.2);
+  --color-white-30: rgba(255, 255, 255, 0.3);
+  --color-white-50: rgba(255, 255, 255, 0.5);
+  --color-white-60: rgba(255, 255, 255, 0.6);
+  --color-white-65: rgba(255, 255, 255, 0.65);
+  --color-white-75: rgba(255, 255, 255, 0.75);
 
   /* ---- Typography ---- */
-  --font-primary: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont,
-    "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
-  --font-display: "Pretendard Variable", Pretendard, sans-serif;
+  --font-primary: "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --font-display: "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
 
   --text-display:  clamp(2.25rem, 5vw, 3.5rem);
   --text-h1:       clamp(1.75rem, 3.5vw, 2.5rem);
