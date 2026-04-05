@@ -7,7 +7,8 @@ body {
   font-size: var(--text-body);
   line-height: var(--leading-normal);
   color: var(--color-charcoal);
-  background-color: var(--color-cream);
+  background:
+    linear-gradient(180deg, var(--color-white) 0%, var(--color-cream) 32%, var(--color-white) 100%);
 }
 
 /* ---- Skip link ---- */
@@ -17,7 +18,7 @@ body {
   left: var(--space-4);
   z-index: 1000;
   padding: var(--space-2) var(--space-4);
-  background: var(--color-gold);
+  background: var(--color-cta-bg);
   color: var(--color-white);
   border-radius: var(--radius-sm);
   font-weight: 600;
@@ -39,6 +40,7 @@ body {
 /* ---- Section defaults ---- */
 .section {
   padding-block: var(--space-16);
+  position: relative;
 }
 
 @media (min-width: 640px) {
@@ -66,10 +68,10 @@ body {
   font-family: var(--font-display);
   font-size: var(--text-small);
   color: var(--color-gold);
-  letter-spacing: 0.15em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   margin-bottom: var(--space-3);
-  font-weight: 400;
+  font-weight: 600;
 }
 
 .section--cream .section__label,
@@ -81,6 +83,7 @@ body {
   font-size: var(--text-h1);
   line-height: var(--leading-tight);
   margin-bottom: var(--space-4);
+  letter-spacing: -0.02em;
 }
 
 .section__subtitle {
@@ -99,6 +102,11 @@ body {
   margin-inline: auto;
 }
 
+.section__header > * {
+  max-width: 760px;
+  margin-inline: auto;
+}
+
 /* ---- Buttons ---- */
 .btn {
   display: inline-flex;
@@ -106,7 +114,9 @@ body {
   justify-content: center;
   gap: var(--space-2);
   padding: var(--space-4) var(--space-10);
-  border-radius: var(--radius-sm);
+  min-height: 52px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-full);
   font-weight: 600;
   font-size: var(--text-body);
   letter-spacing: 0.02em;
@@ -115,8 +125,9 @@ body {
 }
 
 .btn--primary {
-  background: var(--color-gold);
+  background: var(--color-cta-bg);
   color: var(--color-white);
+  box-shadow: 0 16px 32px rgba(43, 102, 128, 0.22);
 }
 
 .btn--primary:hover,
@@ -127,15 +138,17 @@ body {
 }
 
 .btn--secondary {
-  background: transparent;
-  color: var(--color-gold);
-  border: 1px solid var(--color-gold);
+  background: var(--color-white);
+  color: var(--color-charcoal);
+  border-color: var(--color-border-strong);
+  box-shadow: var(--shadow-sm);
 }
 
 .btn--secondary:hover,
 .btn--secondary:focus-visible {
-  background: var(--color-gold);
-  color: var(--color-white);
+  background: var(--color-sand);
+  border-color: var(--color-gold);
+  color: var(--color-gold-dark);
   transform: translateY(-2px);
 }
 
@@ -157,7 +170,7 @@ body {
 
 /* ---- Focus ---- */
 :focus-visible {
-  outline: 2px solid var(--color-gold);
+  outline: 2px solid var(--color-cta-bg);
   outline-offset: 2px;
 }
 

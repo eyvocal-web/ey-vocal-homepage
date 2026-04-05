@@ -60,6 +60,8 @@ Live Server 확장 설치 → `index.html` 우클릭 → Open with Live Server
 
 ### 스튜디오 사진 (`assets/images/`)
 
+각 JPG는 동일한 파일명의 WebP 버전과 함께 제공됩니다. 페이지에서는 `<picture>`로 WebP를 우선 로드하고 JPG를 fallback으로 사용합니다.
+
 | 파일 | 원본 | 용도 |
 |------|------|------|
 | `studio-hero.jpg` | 이천 M보컬학원26.JPG | 히어로 배경 |
@@ -74,26 +76,35 @@ Live Server 확장 설치 → `index.html` 우클릭 → Open with Live Server
 원본 출처: `EY보컬스튜디오 사진/`
 모든 사진은 웹용으로 리사이즈됨 (갤러리 1200px, 히어로 1920px).
 
-## 남은 플레이스홀더
+## 콘텐츠 확정 상태
 
-아래 항목은 실제 정보 확인 후 `index.html`에서 업데이트해야 합니다:
+### 추가 확인 필요
 
-- **강사명** — 강사 섹션 `<h3>대표 강사</h3>` 앞에 이름 추가
-- **강사 자격/경력** — 현재 일반적 문구, 실제 이력으로 교체
-- **전화번호** — `tel:031-000-0000` 및 표시 텍스트
-- **상세 주소** — 경기도 이천시 이후 상세 주소
-- **대중교통 정보** — 정류장명, 도보 시간
-- **사업자 정보** — 대표명, 사업자등록번호
-- **카카오톡 채널 링크** — 상담 버튼 및 플로팅 CTA의 `href="#"`
-- **SNS 링크** — 인스타그램, 유튜브 `href="#"`
-- **지도** — 카카오맵 또는 네이버 지도 embed 코드
-- **강사 사진** — 현재 스튜디오 사진 사용 중, 실제 프로필 사진으로 교체 권장
+| 항목 | 현재 처리 | 위치 |
+|------|-----------|------|
+| 지도 시각 자료 | 지도 임베드 없이 주소 + 외부 지도 링크 버튼으로 대체 | `index.html` `.location__map-placeholder[data-placeholder="true"]` |
+
+### 현재 반영 완료
+
+- 강사 섹션: 일반 안내 문구와 현재 이미지 구성을 최종 콘텐츠로 확정
+- 대중교통 안내: `이천종합버스터미널 인근입니다. 시내버스를 이용할 수 있습니다.`
+- 전화번호: `0507-1377-4624`, `tel:+82-507-1377-4624`
+- 주소: `경기도 이천시 어재연로 37 3층`
+- 사업자 정보: 대표 `이성표`, 사업자등록번호 `105-92-10088`
+- 카카오톡 링크: `https://open.kakao.com/o/seso1YLg`
+- 인스타그램 링크: `https://www.instagram.com/eyvocalstudio/`
+
+## index.html 임시 처리 위치
+
+실제 콘텐츠 확정 전까지 아래 요소에 `data-placeholder="true"`를 유지합니다.
+
+- 위치 섹션 지도 플레이스홀더
 
 ## 기술 스택
 
 - HTML5 + CSS3 + Vanilla JavaScript
 - 외부 프레임워크 없음
-- 폰트: Pretendard (CDN) + Cormorant Garamond (Google Fonts)
+- 폰트: Pretendard (`assets/fonts/PretendardVariable.subset.woff2`, self-hosted)
 - 애니메이션: IntersectionObserver 기반 (라이브러리 없음)
 
 ## 배포
