@@ -172,14 +172,7 @@
     <!-- ====== ABOUT ====== -->
     <section id="about" class="section section--white" aria-labelledby="about-title">
       <div class="container">
-        <div class="instructor__content about-editorial">
-          <div class="instructor__image-wrap reveal">
-            <picture class="instructor__image-frame">
-              <source srcset="assets/images/studio-desk.webp" type="image/webp">
-              <img src="assets/images/studio-desk.jpg" alt="스튜디오 데스크와 모니터가 보이는 내부 공간" class="instructor__image" loading="lazy" width="1200" height="1800">
-            </picture>
-          </div>
-
+        <div class="instructor__content about-editorial about-editorial--text-only">
           <div class="instructor__info reveal">
             <span class="section__label">Studio Profile</span>
             <h2 id="about-title" class="section__title">목소리 한 사람 분량으로 설계합니다</h2>
@@ -396,58 +389,6 @@
       </div>
     </section>
 
-    <!-- ====== GALLERY ====== -->
-    <section id="gallery" class="section section--white" aria-labelledby="gallery-title">
-      <div class="container">
-        <div class="instructor__content">
-          <div class="reveal">
-            <span class="section__label">Studio</span>
-            <h2 id="gallery-title" class="section__title">사진으로 먼저 보면, 스튜디오의 결이 더 빨리 보입니다</h2>
-            <p class="section__subtitle">레슨룸과 대기 공간, 장비 세팅까지 실제 수업 분위기에 가까운 장면만 골랐습니다. 과하게 꾸민 컷보다, 평소 수업에 가까운 화면을 우선 두었습니다.</p>
-          </div>
-
-          <div class="gallery__grid">
-            <button class="gallery__item reveal reveal-delay-1" type="button" aria-label="레슨룸 사진 확대">
-              <picture class="gallery__picture">
-                <source srcset="assets/images/studio-lesson-room.webp" type="image/webp">
-                <img src="assets/images/studio-lesson-room.jpg" alt="레슨룸 — 모니터와 거울이 갖춰진 1:1 레슨 공간" loading="lazy" width="1200" height="800">
-              </picture>
-            </button>
-            <button class="gallery__item reveal reveal-delay-2" type="button" aria-label="작업 스튜디오 사진 확대">
-              <picture class="gallery__picture">
-                <source srcset="assets/images/studio-production.webp" type="image/webp">
-                <img src="assets/images/studio-production.jpg" alt="작업 스튜디오 — 모니터링 스피커와 데스크 장비" loading="lazy" width="1200" height="800">
-              </picture>
-            </button>
-            <button class="gallery__item reveal reveal-delay-3" type="button" aria-label="녹음 장비 사진 확대">
-              <picture class="gallery__picture">
-                <source srcset="assets/images/studio-equipment.webp" type="image/webp">
-                <img src="assets/images/studio-equipment.jpg" alt="녹음 장비 — 모니터 암과 스피커 세팅" loading="lazy" width="1200" height="800">
-              </picture>
-            </button>
-            <button class="gallery__item reveal reveal-delay-1" type="button" aria-label="로비 사진 확대">
-              <picture class="gallery__picture">
-                <source srcset="assets/images/studio-lobby.webp" type="image/webp">
-                <img src="assets/images/studio-lobby.jpg" alt="로비 — 대형 창문이 있는 밝은 입구 공간" loading="lazy" width="1200" height="800">
-              </picture>
-            </button>
-            <button class="gallery__item reveal reveal-delay-2" type="button" aria-label="대기 공간 사진 확대">
-              <picture class="gallery__picture">
-                <source srcset="assets/images/studio-waiting.webp" type="image/webp">
-                <img src="assets/images/studio-waiting.jpg" alt="대기 공간 — 의자와 거울이 있는 편안한 공간" loading="lazy" width="1200" height="800">
-              </picture>
-            </button>
-            <button class="gallery__item reveal reveal-delay-3" type="button" aria-label="복도 사진 확대">
-              <picture class="gallery__picture">
-                <source srcset="assets/images/studio-corridor.webp" type="image/webp">
-                <img src="assets/images/studio-corridor.jpg" alt="복도 — 여러 레슨룸으로 이어지는 깔끔한 통로" loading="lazy" width="1200" height="800">
-              </picture>
-            </button>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- ====== BLOG ====== -->
     <section id="blog" class="section section--cream" aria-labelledby="blog-title">
       <div class="container">
@@ -641,18 +582,6 @@
     </svg>
     <span>카카오톡 상담</span>
   </a>
-
-  <!-- ====== LIGHTBOX ====== -->
-  <div class="lightbox" role="dialog" aria-modal="true" aria-label="이미지 확대 보기" hidden>
-    <button class="lightbox__close" type="button" aria-label="닫기">&times;</button>
-    <button class="lightbox__nav lightbox__prev" type="button" aria-label="이전 이미지">
-      <span aria-hidden="true">←</span>
-    </button>
-    <img class="lightbox__img" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" alt="" tabindex="0" width="1200" height="800">
-    <button class="lightbox__nav lightbox__next" type="button" aria-label="다음 이미지">
-      <span aria-hidden="true">→</span>
-    </button>
-  </div>
 
   <!-- Scripts -->
   <script src="js/main.js" defer></script>
