@@ -13,3 +13,4 @@
 .booking-placeholder__badge{display:inline-flex;align-items:center;justify-content:center;width:max-content;padding:var(--space-2) var(--space-4);border-radius:var(--radius-full);background:var(--color-gold-20);border:1px solid var(--color-gold-30);font-size:var(--text-xs);font-weight:700;letter-spacing:.08em;color:var(--color-gold-light)}
 .booking-placeholder__title{font-size:var(--text-h3);font-weight:400;line-height:var(--leading-tight);color:var(--color-white)}
 .booking-placeholder__text{color:var(--color-gray-light);line-height:var(--leading-relaxed)}
+.program-card__cta{min-height:44px;padding-block:var(--space-2)}
