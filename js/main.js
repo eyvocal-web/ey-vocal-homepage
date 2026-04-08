@@ -12,7 +12,6 @@
     initNav();
     initSmoothScroll();
     initRevealAnimations();
-    initInstructorToggle();
     initFloatingCTA();
 
     var yearEl = document.getElementById('current-year');
@@ -143,19 +142,6 @@
     }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
 
     reveals.forEach(function (el) { observer.observe(el); });
-  }
-
-  function initInstructorToggle() {
-    var btn = document.querySelector('.instructor__more');
-    var extra = document.querySelector('.instructor__extra');
-    if (!btn || !extra) return;
-
-    btn.addEventListener('click', function () {
-      var isOpen = extra.classList.toggle('is-open');
-      btn.setAttribute('aria-expanded', isOpen);
-      btn.querySelector('.instructor__more-text').textContent = isOpen ? '접기' : '레슨 안내 더 보기';
-      btn.querySelector('.instructor__more-arrow').textContent = isOpen ? '↑' : '↓';
-    });
   }
 
   function initFloatingCTA() {
