@@ -2,6 +2,8 @@
 
 대상 프로젝트: `ey-vocal-homepage`
 
+본 가이드는 콘텐츠 placeholder(후기, 강사 텍스트, Hero 사진) 교체 범위만 다루며, 기능·자산 placeholder(지도, 예약, OG 이미지)는 범위 밖입니다.
+
 현재 기준:
 - 실제 사용 중인 사진 영역은 Hero 배경 1건입니다.
 - 후기 4건은 모두 placeholder 상태입니다.
