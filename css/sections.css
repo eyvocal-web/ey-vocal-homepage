@@ -15,3 +15,7 @@
 .booking-placeholder__text{color:var(--color-gray-light);line-height:var(--leading-relaxed)}
 .booking-placeholder .program-process__list{margin-top:var(--space-2)}
 .program-card__cta{min-height:44px;padding-block:var(--space-2)}
+.review-keywords{display:grid;gap:var(--space-3)}
+.review-keywords__source{font-size:var(--text-xs);font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--color-white-60)}
+.review-keywords__list{display:flex;flex-wrap:wrap;gap:var(--space-3)}
+.review-keyword{display:inline-flex;align-items:center;min-height:40px;padding:var(--space-2) var(--space-4);border-radius:var(--radius-full);border:1px solid var(--color-gold-30);background:var(--color-gold-20);font-size:var(--text-small);font-weight:600;color:var(--color-gold-light)}
