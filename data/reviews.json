@@ -1,0 +1,34 @@
+[
+  {
+    "id": "review-001",
+    "nameMask": "김○○",
+    "date": "2026-01",
+    "body": "샘플 후기 001 — 실데이터 수집 후 교체 예정입니다.",
+    "source": "placeholder",
+    "rating": null
+  },
+  {
+    "id": "review-002",
+    "nameMask": "이○○",
+    "date": "2026-02",
+    "body": "샘플 후기 002 — 실데이터 수집 후 교체 예정입니다.",
+    "source": "placeholder",
+    "rating": null
+  },
+  {
+    "id": "review-003",
+    "nameMask": "박○○",
+    "date": "2026-03",
+    "body": "샘플 후기 003 — 실데이터 수집 후 교체 예정입니다.",
+    "source": "placeholder",
+    "rating": null
+  },
+  {
+    "id": "review-004",
+    "nameMask": "정○○",
+    "date": "2026-04",
+    "body": "샘플 후기 004 — 실데이터 수집 후 교체 예정입니다.",
+    "source": "placeholder",
+    "rating": null
+  }
+]
