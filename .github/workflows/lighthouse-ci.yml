@@ -1,0 +1,52 @@
+name: Lighthouse CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - label: mobile
+            config: .github/lighthouserc.mobile.json
+          - label: desktop
+            config: .github/lighthouserc.desktop.json
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Start static server
+        run: |
+          python3 -m http.server 8000 >/tmp/eyvocal-http.log 2>&1 &
+          echo $! >/tmp/eyvocal-http.pid
+
+      - name: Wait for server
+        run: npx wait-on http://127.0.0.1:8000/
+
+      - name: Run Lighthouse CI (${{ matrix.label }})
+        uses: treosh/lighthouse-ci-action@v12
+        with:
+          configPath: ${{ matrix.config }}
+          uploadArtifacts: true
+          temporaryPublicStorage: true
+
+      - name: Stop static server
+        if: always()
+        run: |
+          if [ -f /tmp/eyvocal-http.pid ]; then
+            kill "$(cat /tmp/eyvocal-http.pid)" || true
+          fi
