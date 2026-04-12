@@ -5,19 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#0d0d0d">
   <title>EY보컬스튜디오 — 이천 프리미엄 1:1 보컬 레슨</title>
+  <!-- 기본 메타는 '이천 1:1 보컬 레슨' 검색 의도를 한 번에 설명해 첫 노출 문장을 안정적으로 맞춥니다. -->
   <meta name="description" content="이천 EY보컬스튜디오의 1:1 취미 보컬 레슨. 상담부터 목소리 진단, 맞춤 커리큘럼, 주간 피드백까지 차근히 이어지는 보컬 수업을 안내합니다.">
   <link rel="canonical" href="https://eyvocal.com/">
   <link rel="preload" href="assets/fonts/PretendardVariable.subset.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/images/studio-hero.webp" as="image" type="image/webp" imagesrcset="assets/images/studio-hero-800.webp 800w, assets/images/studio-hero.webp 1600w" imagesizes="100vw" fetchpriority="high">
 
-  <!-- Open Graph -->
+  <!-- 공유 카드에서는 클릭 전 신뢰를 만드는 역할이 커서, 제목·설명·이미지를 랜딩 핵심 메시지와 맞춥니다. -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="EY보컬스튜디오 — 이천 프리미엄 1:1 보컬 레슨">
   <meta property="og:description" content="1:1 취미 보컬 레슨으로 당신만의 목소리를 찾아드립니다. 직장인과 학생 모두 상담 가능합니다.">
   <meta property="og:locale" content="ko_KR">
   <meta property="og:url" content="https://eyvocal.com/">
 
-  <!-- Structured Data: LocalBusiness -->
+  <!-- 검색엔진이 학원형 랜딩을 장소 기반 비즈니스로 이해해야 지도·지역 탐색과 자연스럽게 연결됩니다. -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -106,7 +107,7 @@
   }
   </script>
 
-  <!-- Structured Data: WebSite -->
+  <!-- 사이트 자체 정체성을 별도 선언해 사업체 정보와 랜딩 페이지 역할을 검색엔진 안에서 분리합니다. -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -118,7 +119,7 @@
   }
   </script>
 
-  <!-- Structured Data: FAQPage -->
+  <!-- FAQ는 상담 전에 반복되는 질문을 먼저 소거해, 검색 결과와 랜딩 본문 양쪽에서 저항을 줄입니다. -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -184,7 +185,7 @@
   }
   </script>
 
-  <!-- Styles -->
+  <!-- 배포는 번들 파일을 참조해 요청 수를 줄이고, 유지보수는 소스 CSS에서 계속합니다. -->
   <link rel="stylesheet" href="css/app.min.css">
 
   <!-- Favicon -->
@@ -236,9 +237,9 @@
   </header>
 
   <main id="main">
-    <!-- ====== HERO ====== -->
+  <!-- 첫 화면은 지역·업종·전환 CTA를 동시에 보여 줘 유입 직후 이탈을 막는 구간입니다. -->
     <section class="hero" aria-label="히어로">
-      <!-- Background studio photo -->
+      <!-- 실제 스튜디오 이미지를 전면에 두는 이유는 카피보다 공간 신뢰를 먼저 전달하기 위해서입니다. -->
       <div class="hero__bg" aria-hidden="true">
         <picture class="hero__bg-picture">
           <source
@@ -273,13 +274,13 @@
         <div class="hero__scroll-indicator"></div>
       </div>
 
-      <!-- Bottom wave SVG -->
+      <!-- 하단 분리선은 다음 섹션 진입을 부드럽게 만들어 긴 랜딩이 한 화면처럼 이어지게 합니다. -->
       <svg class="hero__wave" viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="none">
         <path d="M0 40C240 80 480 0 720 40C960 80 1200 0 1440 40V80H0V40Z" fill="var(--color-cream)"/>
       </svg>
     </section>
 
-    <!-- ====== ABOUT ====== -->
+    <!-- 소개 섹션은 '누가 가르치는지'보다 '어떻게 설계해 주는지'를 먼저 보여 주는 신뢰 구간입니다. -->
     <section id="about" class="section section--white" aria-labelledby="about-title">
       <div class="container">
         <div class="instructor__content about-editorial about-editorial--text-only">
@@ -309,7 +310,7 @@
       </div>
     </section>
 
-    <!-- ====== PROGRAMS ====== -->
+    <!-- 레슨 설명은 막연한 홍보보다 실제 진행 흐름을 보여 줘 상담 전 기대치를 맞추는 역할을 맡습니다. -->
     <section id="programs" class="section section--cream" aria-labelledby="programs-title">
       <div class="container">
         <div class="instructor__content">
@@ -413,7 +414,7 @@
       </div>
     </section>
 
-    <!-- ====== TESTIMONIALS ====== -->
+    <!-- 후기는 운영자 설명보다 강한 제3자 증거라서, 전환 전에 가장 긴 신뢰 블록으로 배치합니다. -->
     <section id="testimonials" class="section section--white" aria-labelledby="testimonials-title">
       <div class="container">
         <div class="location__content">
@@ -533,7 +534,7 @@
       </div>
     </section>
 
-    <!-- ====== FAQ ====== -->
+    <!-- FAQ는 문의 직전 망설이는 질문을 한 번 더 줄여 CTA 클릭 부담을 낮추는 방어선입니다. -->
     <section id="faq" class="section section--cream" aria-labelledby="faq-title">
       <div class="container">
         <div class="location__content">
@@ -597,7 +598,7 @@
       </div>
     </section>
 
-    <!-- ====== BLOG ====== -->
+    <!-- 블로그 섹션은 아직 글이 없어도 향후 SEO 확장 슬롯을 미리 확보해 두는 역할을 합니다. -->
     <section id="blog" class="section section--cream" aria-labelledby="blog-title">
       <div class="container">
         <div class="location__content">
@@ -643,7 +644,7 @@
       </div>
     </section>
 
-    <!-- ====== LOCATION ====== -->
+    <!-- 위치 섹션은 방문 결정을 막는 마지막 마찰을 줄이기 위해 길 안내 정보만 짧게 압축합니다. -->
     <section id="location" class="section section--white" aria-labelledby="location-title">
       <div class="container">
         <div class="location__content">
@@ -662,6 +663,7 @@
                 <li>이천종합버스터미널 인근</li>
                 <li>건물 내 무료 주차 가능</li>
               </ul>
+              <!-- 네이버플레이스와 카카오맵만 남겨 국내 사용자가 실제로 가장 자주 쓰는 길찾기 경로에 집중합니다. -->
               <div class="location__map-actions">
                 <a href="https://m.place.naver.com/place/1435030907/home" class="btn btn--secondary btn--small" target="_blank" rel="noopener noreferrer">네이버플레이스에서 보기</a>
                 <a href="https://map.kakao.com/link/search/%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%9D%B4%EC%B2%9C%EC%8B%9C%20%EC%96%B4%EC%9E%AC%EC%97%B0%EB%A1%9C%2037" class="btn btn--secondary btn--small" target="_blank" rel="noopener noreferrer">카카오맵에서 보기</a>
@@ -719,7 +721,7 @@
       </div>
     </section>
 
-    <!-- ====== BOOKING ====== -->
+    <!-- 예약 섹션은 별도 시스템보다 상담 전환이 빠른 현재 운영 방식에 맞춰 문의 흐름을 바로 설명합니다. -->
     <section id="booking" class="section section--cream" aria-labelledby="booking-title">
       <div class="container">
         <div class="location__content">
@@ -758,6 +760,7 @@
               </li>
             </ol>
 
+            <!-- 첫 전환 채널을 카카오톡으로 고정한 이유는 상담·시간 조율·확정까지 한 스레드에서 이어지기 때문입니다. -->
             <div class="location__map-actions">
               <a href="https://open.kakao.com/o/seso1YLg" class="btn btn--primary" target="_blank" rel="noopener noreferrer">카카오톡으로 예약 문의</a>
               <a href="#contact" class="btn btn--secondary">상담 안내 먼저 보기</a>
@@ -767,7 +770,7 @@
       </div>
     </section>
 
-    <!-- ====== CONTACT CTA ====== -->
+    <!-- 마지막 CTA는 카카오톡과 전화 두 경로만 남겨, 결정을 끝까지 미루지 않도록 선택지를 단순화합니다. -->
     <section id="contact" class="section contact-cta" aria-labelledby="contact-title">
       <div class="container">
         <div class="reveal">
@@ -839,7 +842,7 @@
     </div>
   </footer>
 
-  <!-- ====== FLOATING KAKAOTALK CTA ====== -->
+  <!-- 플로팅 CTA는 스크롤 후에도 상담 진입점을 잃지 않게 하는 보조 전환 장치입니다. -->
   <a href="https://open.kakao.com/o/seso1YLg" class="floating-cta" aria-label="카카오톡 상담" target="_blank" rel="noopener noreferrer">
     <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
       <path d="M12 3C6.48 3 2 6.58 2 10.9c0 2.78 1.86 5.22 4.66 6.6l-.96 3.56c-.07.25.2.46.42.33l4.17-2.78c.56.07 1.13.1 1.71.1 5.52 0 10-3.58 10-7.9S17.52 3 12 3z"/>

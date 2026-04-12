@@ -1,3 +1,113 @@
-@font-face{font-family:Pretendard;src:url("../assets/fonts/PretendardVariable.subset.woff2") format("woff2-variations");font-weight:45 920;font-style:normal;font-display:swap}
-:root{--color-charcoal:#0d0d0d;--color-charcoal-light:#141414;--color-blackest:#080808;--color-gold:#c8a96e;--color-gold-light:#ddc392;--color-gold-dark:#ab8a53;--color-cta-bg:#c8a96e;--color-cream:#111111;--color-rose:#b49a84;--color-gray:#8a8a8a;--color-gray-light:#b8b8b0;--color-sand:#1a1a1a;--color-white:#f5f5f0;--color-success:#77a37a;--color-error:#cf7676;--color-kakao:#fee500;--color-kakao-text:#241800;--color-cream-glass:rgba(17,17,17,.72);--color-cream-glass-strong:rgba(17,17,17,.92);--color-charcoal-overlay:rgba(8,8,8,.72);--color-gold-20:rgba(200,169,110,.18);--color-border:rgba(245,245,240,.08);--color-border-strong:rgba(245,245,240,.16);--color-white-08:rgba(245,245,240,.08);--color-white-10:rgba(245,245,240,.1);--color-white-12:rgba(245,245,240,.12);--color-white-18:rgba(245,245,240,.18);--color-white-20:rgba(245,245,240,.2);--color-white-30:rgba(245,245,240,.3);--color-white-40:rgba(245,245,240,.4);--color-white-50:rgba(245,245,240,.5);--color-white-60:rgba(245,245,240,.6);--color-white-65:rgba(245,245,240,.65);--color-white-75:rgba(245,245,240,.75);--color-black-35:rgba(0,0,0,.35);--color-black-55:rgba(0,0,0,.55);--color-black-72:rgba(0,0,0,.72);--color-panel:rgba(30,30,30,.92);--color-panel-strong:rgba(37,37,37,.96);--color-panel-soft:rgba(26,26,26,.78);--font-primary:"Pretendard","Apple SD Gothic Neo","Malgun Gothic",sans-serif;--font-display:"Pretendard","Apple SD Gothic Neo","Malgun Gothic",sans-serif;--text-display:clamp(2rem,6vw,5rem);--text-h1:clamp(1.8rem,4vw,3rem);--text-h2:clamp(1.35rem,2.4vw,1.85rem);--text-h3:clamp(1.05rem,1.9vw,1.2rem);--text-body:clamp(.95rem,1.4vw,1rem);--text-small:.875rem;--text-xs:.75rem;--leading-tight:1.15;--leading-normal:1.65;--leading-relaxed:1.85;--space-1:.25rem;--space-2:.5rem;--space-3:.75rem;--space-4:1rem;--space-6:1.5rem;--space-8:2rem;--space-10:2.5rem;--space-12:3rem;--space-16:4rem;--space-20:5rem;--space-24:6rem;--space-32:8rem;--container-max:1200px;--container-px:var(--space-4);--nav-height:72px;--radius-sm:4px;--radius-md:12px;--radius-lg:32px;--radius-full:9999px;--shadow-sm:0 12px 30px rgba(0,0,0,.14);--shadow-md:0 24px 56px rgba(0,0,0,.2);--shadow-lg:0 32px 80px rgba(0,0,0,.28);--shadow-xl:0 44px 100px rgba(0,0,0,.34);--ease-out:cubic-bezier(.25,.46,.45,.94);--ease-in-out:cubic-bezier(.42,0,.58,1);--ease-spring:cubic-bezier(.34,1.56,.64,1);--duration-fast:.2s;--duration-normal:.3s;--duration-slow:.6s}
-@media (min-width:640px){:root{--container-px:var(--space-6)}}
+/* 브랜드 전반에서 같은 질감을 유지하려고, 서브셋 변수 폰트 하나로 타이포를 통일합니다. */
+@font-face {
+  font-family: Pretendard;
+  src: url("../assets/fonts/PretendardVariable.subset.woff2")
+    format("woff2-variations");
+  font-weight: 45 920;
+  font-style: normal;
+  font-display: swap;
+}
+/* 다크 콘셉트 전환 이후 모든 화면이 같은 기준으로 움직이도록 디자인 토큰을 한곳에 모읍니다. */
+:root {
+  /* 골드는 CTA와 핵심 포인트만 강조하고, 크림 계열은 어두운 배경 안에서 레이어를 구분하는 데 씁니다. */
+  --color-charcoal: #0d0d0d;
+  --color-charcoal-light: #141414;
+  --color-blackest: #080808;
+  --color-gold: #c8a96e;
+  --color-gold-light: #ddc392;
+  --color-gold-dark: #ab8a53;
+  --color-cta-bg: #c8a96e;
+  --color-cream: #111111;
+  --color-rose: #b49a84;
+  --color-gray: #8a8a8a;
+  --color-gray-light: #b8b8b0;
+  --color-sand: #1a1a1a;
+  --color-white: #f5f5f0;
+  --color-success: #77a37a;
+  --color-error: #cf7676;
+  --color-kakao: #fee500;
+  --color-kakao-text: #241800;
+  --color-cream-glass: rgba(17, 17, 17, 0.72);
+  --color-cream-glass-strong: rgba(17, 17, 17, 0.92);
+  --color-charcoal-overlay: rgba(8, 8, 8, 0.72);
+  --color-gold-20: rgba(200, 169, 110, 0.18);
+  --color-border: rgba(245, 245, 240, 0.08);
+  --color-border-strong: rgba(245, 245, 240, 0.16);
+  --color-white-08: rgba(245, 245, 240, 0.08);
+  --color-white-10: rgba(245, 245, 240, 0.1);
+  --color-white-12: rgba(245, 245, 240, 0.12);
+  --color-white-18: rgba(245, 245, 240, 0.18);
+  --color-white-20: rgba(245, 245, 240, 0.2);
+  --color-white-30: rgba(245, 245, 240, 0.3);
+  --color-white-40: rgba(245, 245, 240, 0.4);
+  --color-white-50: rgba(245, 245, 240, 0.5);
+  --color-white-60: rgba(245, 245, 240, 0.6);
+  --color-white-65: rgba(245, 245, 240, 0.65);
+  --color-white-75: rgba(245, 245, 240, 0.75);
+  --color-black-35: rgba(0, 0, 0, 0.35);
+  --color-black-55: rgba(0, 0, 0, 0.55);
+  --color-black-72: rgba(0, 0, 0, 0.72);
+  --color-panel: rgba(30, 30, 30, 0.92);
+  --color-panel-strong: rgba(37, 37, 37, 0.96);
+  --color-panel-soft: rgba(26, 26, 26, 0.78);
+
+  /* 디스플레이용 별도 서체를 두지 않고 본문과 같은 계열을 써서 정적 랜딩의 인상을 단정하게 유지합니다. */
+  --font-primary:
+    "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --font-display:
+    "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+
+  /* 큰 제목은 강하게, 본문은 무리 없이 읽히게 하려고 화면 폭에 따라 완만하게 줄어드는 스케일을 사용합니다. */
+  --text-display: clamp(2rem, 6vw, 5rem);
+  --text-h1: clamp(1.8rem, 4vw, 3rem);
+  --text-h2: clamp(1.35rem, 2.4vw, 1.85rem);
+  --text-h3: clamp(1.05rem, 1.9vw, 1.2rem);
+  --text-body: clamp(0.95rem, 1.4vw, 1rem);
+  --text-small: 0.875rem;
+  --text-xs: 0.75rem;
+  --leading-tight: 1.15;
+  --leading-normal: 1.65;
+  --leading-relaxed: 1.85;
+
+  /* 간격은 4px 계열 비율을 기본으로 잡아 섹션과 카드가 달라도 리듬이 끊기지 않게 맞춥니다. */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+  --space-32: 8rem;
+
+  /* 1200px 컨테이너와 완만한 라운드/그림자는 정보량이 많아져도 과하게 앱처럼 보이지 않게 하는 기준입니다. */
+  --container-max: 1200px;
+  --container-px: var(--space-4);
+  --nav-height: 72px;
+  --radius-sm: 4px;
+  --radius-md: 12px;
+  --radius-lg: 32px;
+  --radius-full: 9999px;
+  --shadow-sm: 0 12px 30px rgba(0, 0, 0, 0.14);
+  --shadow-md: 0 24px 56px rgba(0, 0, 0, 0.2);
+  --shadow-lg: 0 32px 80px rgba(0, 0, 0, 0.28);
+  --shadow-xl: 0 44px 100px rgba(0, 0, 0, 0.34);
+
+  /* 인터랙션 속도와 easing을 고정해 CTA·메뉴·스크롤 애니메이션이 서로 다른 제품처럼 보이지 않게 합니다. */
+  --ease-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-in-out: cubic-bezier(0.42, 0, 0.58, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --duration-fast: 0.2s;
+  --duration-normal: 0.3s;
+  --duration-slow: 0.6s;
+}
+
+/* 640px는 모바일 단일열에서 벗어나기 시작하는 첫 지점이라 좌우 여백만 먼저 넓혀 답답함을 줄입니다. */
+@media (min-width: 640px) {
+  :root {
+    --container-px: var(--space-6);
+  }
+}

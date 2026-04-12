@@ -1,3 +1,4 @@
+/* 한국어 본문이 많은 랜딩이라, 단어 단위 줄바꿈과 다크 배경 기본 톤을 여기서 강제합니다. */
 body {
   font-family: var(--font-primary);
   font-size: var(--text-body);
@@ -90,6 +91,7 @@ body {
   margin-bottom: var(--space-4);
   text-wrap: balance;
 }
+/* 부제와 본문성 문장은 의미 단위가 깨지면 신뢰감이 떨어져서, 고아 줄을 줄이는 래핑을 기본값으로 둡니다. */
 .section__subtitle {
   max-width: 34rem;
   font-size: var(--text-body);
@@ -97,6 +99,7 @@ body {
   color: var(--color-gray-light);
   text-wrap: pretty;
 }
+/* 의도한 카피 개행은 데스크톱에서만 노출해 모바일에서는 자연 줄바꿈을 우선합니다. */
 .line-break--desktop {
   display: none;
 }
@@ -159,6 +162,7 @@ body {
   outline: 2px solid var(--color-gold);
   outline-offset: 2px;
 }
+/* 모든 섹션이 같은 방식으로 등장해야 시선 흐름이 안정되므로 reveal 계열을 공통 유틸리티로 유지합니다. */
 .reveal {
   opacity: 0;
   transform: translateY(24px);
@@ -204,6 +208,7 @@ body {
     display: block;
   }
 }
+/* 모션을 끄는 사용자는 장식 효과보다 정보 인지가 우선이므로 등장 애니메이션을 즉시 해제합니다. */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
