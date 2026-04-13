@@ -48,33 +48,23 @@ Live Server 확장 설치 → `index.html` 우클릭 → Open with Live Server
 | 파일 | 용도 |
 |------|------|
 | `logo-horizontal-black.png` | 내비게이션 바 로고 (검정) |
-| `logo-horizontal-white.png` | 푸터 로고 (흰색) |
-| `logo-stacked-black.png` | OG 이미지, 일반용 (검정) |
-| `logo-stacked-white.png` | 히어로 섹션 로고 (흰색) |
+| `logo-horizontal-white.png` | 히어로/푸터 로고 (흰색) |
 | `logo-icon-black.png` | 파비콘 (검정) |
-| `logo-icon-white.png` | 다크 배경용 아이콘 |
-| `logo-text-black.png` | 텍스트만 (검정) |
-| `logo-text-white.png` | 텍스트만 (흰색) |
 
 원본 출처: `디자인 원본파일/PNG (투명배경)/`
 
 ### 스튜디오 사진 (`assets/images/`)
 
-각 JPG는 동일한 파일명의 WebP 버전과 함께 제공됩니다. 페이지에서는 `<picture>`로 WebP를 우선 로드하고 JPG를 fallback으로 사용합니다.
+현재 운영 자산은 히어로 원본/800px 파생본과 OG 이미지로 정리되어 있습니다. 페이지에서는 `<picture>`로 WebP를 우선 로드하고 JPG를 fallback으로 사용합니다.
 
 | 파일 | 원본 | 용도 |
 |------|------|------|
 | `studio-hero.jpg` | 이천 M보컬학원26.JPG | 히어로 배경 |
-| `studio-lesson-room.jpg` | 이천 M보컬학원20.JPG | 갤러리 — 레슨룸 |
-| `studio-production.jpg` | 이천 M보컬학원25.JPG | 갤러리 — 작업실 |
-| `studio-equipment.jpg` | 이천 M보컬학원28.JPG | 갤러리 — 장비 |
-| `studio-lobby.jpg` | 이천 M보컬학원3.JPG | 갤러리 — 로비 |
-| `studio-waiting.jpg` | 이천 M보컬학원30.JPG | 갤러리 — 대기 공간 |
-| `studio-corridor.jpg` | 이천 M보컬학원10.JPG | 갤러리 — 복도 |
-| `studio-desk.jpg` | 이천 M보컬학원35.JPG | 강사 섹션 이미지 |
+| `studio-hero-800.jpg` | `studio-hero.jpg` 리사이즈 | 모바일용 히어로 변형 |
+| `og-image.png` | 브랜드 배경 + 로고 합성 | Open Graph / 공유 썸네일 |
 
 원본 출처: `EY보컬스튜디오 사진/`
-모든 사진은 웹용으로 리사이즈됨 (갤러리 1200px, 히어로 1920px).
+모든 사진은 웹용으로 리사이즈됨 (히어로 1600px, 모바일 800px).
 
 ## 콘텐츠 확정 상태
 
