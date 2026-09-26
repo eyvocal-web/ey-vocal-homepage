@@ -156,7 +156,9 @@
 .nav__mobile a:focus-visible {
   color: var(--color-gold-light);
 }
-.nav__mobile .btn {
+.nav__mobile a.btn {
+  color: var(--color-charcoal);
+  font-weight: 600;
   width: min(18rem, 100%);
   margin-top: var(--space-4);
 }
@@ -557,6 +559,9 @@
 .blog__grid {
   display: grid;
   gap: var(--space-4);
+}
+.blog__grid:has(> :only-child) {
+  grid-template-columns: minmax(0, 1fr);
 }
 .blog-card {
   height: 100%;
