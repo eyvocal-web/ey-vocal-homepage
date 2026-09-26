@@ -7,16 +7,17 @@
   <title>EY보컬스튜디오 — 이천 프리미엄 1:1 보컬 레슨</title>
   <!-- 기본 메타는 '이천 1:1 보컬 레슨' 검색 의도를 한 번에 설명해 첫 노출 문장을 안정적으로 맞춥니다. -->
   <meta name="description" content="이천 EY보컬스튜디오의 1:1 취미 보컬 레슨. 상담부터 목소리 진단, 맞춤 커리큘럼, 주간 피드백까지 차근히 이어지는 보컬 수업을 안내합니다.">
-  <link rel="canonical" href="https://eyvocal.com/">
+  <link rel="canonical" href="https://www.eyvocal.com/">
   <link rel="preload" href="assets/fonts/PretendardVariable.subset.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="assets/images/studio-hero.webp" as="image" type="image/webp" imagesrcset="assets/images/studio-hero-800.webp 800w, assets/images/studio-hero.webp 1600w" imagesizes="100vw" fetchpriority="high">
+  <link rel="preload" href="assets/images/studio-hero-mobile.webp" as="image" type="image/webp" media="(max-width: 767px)" fetchpriority="high">
+  <link rel="preload" href="assets/images/studio-hero.webp" as="image" type="image/webp" media="(min-width: 768px)" fetchpriority="high">
 
   <!-- 공유 카드에서는 클릭 전 신뢰를 만드는 역할이 커서, 제목·설명·이미지를 랜딩 핵심 메시지와 맞춥니다. -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="EY보컬스튜디오 — 이천 프리미엄 1:1 보컬 레슨">
   <meta property="og:description" content="1:1 취미 보컬 레슨으로 당신만의 목소리를 찾아드립니다. 직장인과 학생 모두 상담 가능합니다.">
   <meta property="og:locale" content="ko_KR">
-  <meta property="og:url" content="https://eyvocal.com/">
+  <meta property="og:url" content="https://www.eyvocal.com/">
 
   <!-- 검색엔진이 학원형 랜딩을 장소 기반 비즈니스로 이해해야 지도·지역 탐색과 자연스럽게 연결됩니다. -->
   <script type="application/ld+json">
@@ -25,9 +26,9 @@
     "@type": "LocalBusiness",
     "name": "EY보컬스튜디오",
     "description": "이천 소재 프리미엄 1:1 취미 보컬 레슨 스튜디오",
-    "url": "https://eyvocal.com/",
-    "image": "https://eyvocal.com/assets/images/og-image.png",
-    "telephone": "+82-507-1377-4624",
+    "url": "https://www.eyvocal.com/",
+    "image": "https://www.eyvocal.com/assets/images/og-image.png",
+    "telephone": "0507-1377-4624",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "어재연로 37 3층",
@@ -113,7 +114,7 @@
     "@context": "https://schema.org",
     "@type": "WebSite",
     "name": "EY보컬스튜디오",
-    "url": "https://eyvocal.com/",
+    "url": "https://www.eyvocal.com/",
     "inLanguage": "ko-KR",
     "description": "이천 EY보컬스튜디오의 1:1 취미 보컬 레슨 안내 랜딩 페이지"
   }
@@ -192,11 +193,11 @@
   <link rel="icon" type="image/png" href="assets/brand/logo-icon-black.png">
 
   <!-- Open Graph Image -->
-  <meta property="og:image" content="https://eyvocal.com/assets/images/og-image.png">
+  <meta property="og:image" content="https://www.eyvocal.com/assets/images/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="EY보컬스튜디오 — 이천 프리미엄 1:1 보컬 레슨">
   <meta name="twitter:description" content="1:1 취미 보컬 레슨으로 당신만의 목소리를 찾아드립니다. 직장인과 학생 모두 상담 가능합니다.">
-  <meta name="twitter:image" content="https://eyvocal.com/assets/images/og-image.png">
+  <meta name="twitter:image" content="https://www.eyvocal.com/assets/images/og-image.png">
 </head>
 <body>
   <!-- Skip link -->
@@ -206,7 +207,7 @@
   <header class="nav">
     <div class="nav__inner">
       <a href="#main" class="nav__logo" aria-label="EY보컬스튜디오 홈">
-        <img src="assets/brand/logo-horizontal-black.png" alt="EY보컬스튜디오" class="nav__logo-img" width="400" height="400">
+        <img src="assets/brand/logo-horizontal-white.png" alt="EY보컬스튜디오" class="nav__logo-img" width="871" height="225">
       </a>
 
       <nav class="nav__links" aria-label="메인 네비게이션">
@@ -225,8 +226,11 @@
       </button>
     </div>
 
+  </header>
+
     <!-- Mobile Menu -->
     <div class="nav__mobile" id="mobile-menu" role="dialog" aria-label="모바일 메뉴" aria-modal="true" hidden>
+      <button class="nav__close" type="button" aria-label="메뉴 닫기">닫기</button>
       <a href="#about">소개</a>
       <a href="#programs">레슨</a>
       <a href="#testimonials">후기</a>
@@ -234,7 +238,7 @@
       <a href="#location">오시는 길</a>
       <a href="#contact" class="btn btn--primary">상담 신청</a>
     </div>
-  </header>
+
 
   <main id="main">
   <!-- 첫 화면은 지역·업종·전환 CTA를 동시에 보여 줘 유입 직후 이탈을 막는 구간입니다. -->
@@ -242,13 +246,14 @@
       <!-- 실제 스튜디오 이미지를 전면에 두는 이유는 카피보다 공간 신뢰를 먼저 전달하기 위해서입니다. -->
       <div class="hero__bg" aria-hidden="true">
         <picture class="hero__bg-picture">
+          <source media="(max-width: 767px)" srcset="assets/images/studio-hero-mobile.webp" type="image/webp">
+          <source media="(max-width: 767px)" srcset="assets/images/studio-hero-mobile.jpg" type="image/jpeg">
           <source
-            srcset="assets/images/studio-hero-800.webp 800w, assets/images/studio-hero.webp 1600w"
+            srcset="assets/images/studio-hero.webp"
             sizes="100vw"
             type="image/webp">
           <img
             src="assets/images/studio-hero.jpg"
-            srcset="assets/images/studio-hero-800.jpg 800w, assets/images/studio-hero.jpg 1600w"
             sizes="100vw"
             alt=""
             class="hero__bg-img"
@@ -261,12 +266,13 @@
       </div>
 
       <div class="hero__content">
-        <img src="assets/brand/logo-horizontal-white.png" alt="EY보컬스튜디오" class="hero__logo" loading="eager" width="400" height="400">
+        <img src="assets/brand/logo-horizontal-white.png" alt="EY보컬스튜디오" class="hero__logo" loading="eager" width="871" height="225">
         <p class="hero__eyebrow">Premium 1:1 Vocal Lesson</p>
         <h1 class="hero__title">당신의 목소리,<span class="line-break--desktop" aria-hidden="true"></span>달라질 수 있습니다</h1>
         <p class="hero__subtitle">이천에서 만나는 1:1 맞춤 보컬 레슨.<span class="line-break--desktop" aria-hidden="true"></span>체계적인 커리큘럼으로 당신만의 목소리를 찾아드립니다.</p>
         <div class="hero__cta">
-          <a href="#booking" class="btn btn--primary">무료 상담 신청하기</a>
+          <a href="https://booking.naver.com/booking/13/bizes/1249695/items/6231823" class="btn btn--primary" target="_blank" rel="noopener noreferrer">체험 예약하기</a>
+          <a href="https://open.kakao.com/o/seso1YLg" class="btn btn--secondary" target="_blank" rel="noopener noreferrer">카카오톡 상담</a>
         </div>
       </div>
 
@@ -417,7 +423,26 @@
     <!-- 후기는 운영자 설명보다 강한 제3자 증거라서, 전환 전에 가장 긴 신뢰 블록으로 배치합니다. -->
     <section id="testimonials" class="section section--white" aria-labelledby="testimonials-title">
       <div class="container">
-        <div class="location__content">
+        <div class="testimonials__intro">
+            <div class="reveal reveal-delay-2">
+              <span class="section__label">Reviews</span>
+              <h2 id="testimonials-title" class="section__title">레슨을 오래 설명하지 않아도, 목소리 쪽에서 먼저 반응이 옵니다</h2>
+              <p class="section__subtitle">네이버플레이스에 남겨 주신 후기 중, 수업 변화가 잘 드러나는 내용을 추려 담았습니다. 일정이 바쁜 분들도 무리 없이 이어 가는 방식이 자주 언급됩니다.</p>
+            </div>
+
+            <div class="review-keywords reveal reveal-delay-2">
+              <p class="review-keywords__source">네이버 방문자리뷰</p>
+              <div class="review-keywords__list">
+                <span class="review-keyword">선생님이 열정적이에요</span>
+                <span class="review-keyword">학생과 소통을 잘해요</span>
+                <span class="review-keyword">맞춤 지도를 잘해줘요</span>
+                <span class="review-keyword">수업이 체계적이에요</span>
+                <span class="review-keyword">선생님 실력이 좋아요</span>
+              </div>
+            </div>
+
+        </div>
+        <div class="testimonials__grid">
           <div class="testimonial-card reveal reveal-delay-1">
             <blockquote>
               <p class="testimonial-card__quote">
@@ -432,25 +457,7 @@
             </blockquote>
           </div>
 
-          <div class="location__details">
-            <div class="reveal reveal-delay-2">
-              <span class="section__label">Reviews</span>
-              <h2 id="testimonials-title" class="section__title">레슨을 오래 설명하지 않아도, 목소리 쪽에서 먼저 반응이 옵니다</h2>
-              <p class="section__subtitle">네이버플레이스에 남겨 주신 후기 중, 수업 변화가 잘 드러나는 내용을 추려 담았습니다. 일정이 바쁜 분들도 무리 없이 이어 가는 방식이 자주 언급됩니다.</p>
-            </div>
-
-            <div class="review-keywords reveal reveal-delay-2">
-              <p class="review-keywords__source">네이버 방문자리뷰 35건 기준</p>
-              <div class="review-keywords__list">
-                <span class="review-keyword">선생님이 열정적이에요</span>
-                <span class="review-keyword">학생과 소통을 잘해요</span>
-                <span class="review-keyword">맞춤 지도를 잘해줘요</span>
-                <span class="review-keyword">수업이 체계적이에요</span>
-                <span class="review-keyword">선생님 실력이 좋아요</span>
-              </div>
-            </div>
-
-            <div class="testimonial-card reveal reveal-delay-3">
+          <div class="testimonial-card reveal reveal-delay-3">
               <blockquote>
                 <p class="testimonial-card__quote">
                   배운 지 3달 정도 된 학생입니다.
@@ -465,7 +472,7 @@
               </blockquote>
             </div>
 
-            <div class="testimonial-card reveal reveal-delay-3">
+          <div class="testimonial-card reveal reveal-delay-3">
               <blockquote>
                 <p class="testimonial-card__quote">
                   꾸준히 다니다 보니 어느덧 7개월 정도를 다니게 되었네요.
@@ -478,7 +485,7 @@
               </blockquote>
             </div>
 
-            <div class="testimonial-card reveal reveal-delay-4">
+          <div class="testimonial-card reveal reveal-delay-4">
               <blockquote>
                 <p class="testimonial-card__quote">
                   축가 연습을 위해 학원 등록했어요.
@@ -492,7 +499,7 @@
               </blockquote>
             </div>
 
-            <div class="testimonial-card reveal reveal-delay-1">
+          <div class="testimonial-card reveal reveal-delay-1">
               <blockquote>
                 <p class="testimonial-card__quote">
                   수업이 체계적으로 이루어집니다.
@@ -506,7 +513,7 @@
               </blockquote>
             </div>
 
-            <div class="testimonial-card reveal reveal-delay-1">
+          <div class="testimonial-card reveal reveal-delay-1">
               <blockquote>
                 <p class="testimonial-card__quote">
                   노래를 회피할 정도로 자신감이 없어서 시작했는데,
@@ -520,7 +527,8 @@
                 </footer>
               </blockquote>
             </div>
-
+        </div>
+        <div class="testimonials__cta">
             <div class="reveal reveal-delay-2">
               <p class="section__subtitle">후기는 네이버플레이스에 남겨 주신 실제 수강생 후기를 기준으로 추려 반영합니다.</p>
             </div>
@@ -529,7 +537,6 @@
               <p class="section__subtitle">수업이 궁금하시면, 예약 안내부터 먼저 편하게 확인해 보실 수 있습니다.</p>
               <a href="#booking" class="btn btn--primary">예약 안내 보기</a>
             </div>
-          </div>
         </div>
       </div>
     </section>
@@ -598,46 +605,28 @@
       </div>
     </section>
 
-    <!-- 블로그 섹션은 아직 글이 없어도 향후 SEO 확장 슬롯을 미리 확보해 두는 역할을 합니다. -->
+    <!-- 발행이 확인된 글만 연결합니다. -->
     <section id="blog" class="section section--cream" aria-labelledby="blog-title">
       <div class="container">
         <div class="location__content">
           <div class="blog__grid">
             <article class="blog-card reveal reveal-delay-1">
-              <div class="blog-card__link" data-blog-url="">
-                <span class="blog-card__badge">오픈 예정</span>
-                <h3>발성 기초 정리</h3>
-                <p>호흡과 음정 감각을 안정적으로 잡는 연습 포인트를 차근히 정리합니다.</p>
-              </div>
-            </article>
-
-            <article class="blog-card reveal reveal-delay-2">
-              <div class="blog-card__link" data-blog-url="">
-                <span class="blog-card__badge">오픈 예정</span>
-                <h3>직장인 연습 루틴</h3>
-                <p>짧은 시간에도 꾸준히 이어 갈 수 있는 주간 연습 루틴을 소개합니다.</p>
-              </div>
-            </article>
-
-            <article class="blog-card reveal reveal-delay-3">
-              <div class="blog-card__link" data-blog-url="">
-                <span class="blog-card__badge">오픈 예정</span>
-                <h3>좋아하는 곡 연습법</h3>
-                <p>곡 선택부터 표현까지, 취미 보컬 레슨에서 자주 다루는 체크 포인트를 담습니다.</p>
-              </div>
+              <a class="blog-card__link" href="https://blog.naver.com/eyvocal_/224418634965" target="_blank" rel="noopener noreferrer">
+                <span class="blog-card__badge">네이버 블로그</span>
+                <h3>이천 보컬레슨, '이 소리 따라해 보세요'가 안 통하는 이유</h3>
+              </a>
             </article>
           </div>
 
           <div class="location__details">
             <div class="reveal">
               <span class="section__label">Blog</span>
-              <h2 id="blog-title" class="section__title">레슨실에서 자주 나오는 얘기들을, 글로도 남겨 둘 예정입니다</h2>
-              <p class="section__subtitle">EY보컬스튜디오 블로그에서 연습 팁과 레슨 인사이트를 순차적으로 공개할 예정입니다.</p>
+              <h2 id="blog-title" class="section__title">레슨실에서 자주 나오는 얘기들을, 글로도 만나보세요</h2>
+              <p class="section__subtitle">EY보컬스튜디오 블로그에서 연습 팁과 레슨 이야기를 확인하실 수 있습니다.</p>
             </div>
 
             <div class="blog__footer reveal">
-              <p>블로그가 공개되면 이 섹션에서 바로 연결됩니다.</p>
-              <a href="https://www.instagram.com/eyvocalstudio/" class="btn btn--secondary" target="_blank" rel="noopener noreferrer">오픈 소식 보기</a>
+              <a href="https://blog.naver.com/eyvocal_" class="btn btn--secondary" target="_blank" rel="noopener noreferrer">네이버 블로그 보기</a>
             </div>
           </div>
         </div>
@@ -661,7 +650,7 @@
               </div>
               <ul class="location__map-highlights">
                 <li>이천종합버스터미널 인근</li>
-                <li>건물 내 무료 주차 가능</li>
+                <li>창전동 임시공영주차장</li>
               </ul>
               <!-- 네이버플레이스와 카카오맵만 남겨 국내 사용자가 실제로 가장 자주 쓰는 길찾기 경로에 집중합니다. -->
               <div class="location__map-actions">
@@ -700,7 +689,7 @@
               </div>
               <div class="location__item-text">
                 <h3>주차 안내</h3>
-                <p>건물 내 무료 주차 가능</p>
+                <p>창전동 임시공영주차장</p>
               </div>
             </div>
 
@@ -727,20 +716,20 @@
         <div class="location__content">
           <div class="reveal">
             <span class="section__label">Booking</span>
-            <h2 id="booking-title" class="section__title">카카오톡 상담으로 바로 레슨을 시작하실 수 있습니다</h2>
-            <p class="section__subtitle">지금은 별도 예약 페이지보다, 카카오톡으로 먼저 목표와 가능한 시간을 나누고 가장 무리 없는 흐름으로 일정을 잡아 드리는 방식이 더 빠릅니다.</p>
+            <h2 id="booking-title" class="section__title">체험 예약과 카카오톡 상담을 안내합니다</h2>
+            <p class="section__subtitle">체험 레슨은 네이버에서 예약하실 수 있습니다. 궁금한 점은 카카오톡으로 문의해 주세요.</p>
           </div>
 
           <div class="booking-placeholder reveal">
             <span class="booking-placeholder__badge">가장 빠른 시작</span>
-            <p class="booking-placeholder__title">카카오톡으로 먼저 상담을 남겨 주시면, 현재 목표와 가능한 시간대를 바탕으로 수업 흐름을 바로 정리해 드립니다.</p>
-            <p class="booking-placeholder__text">처음 문의하시는 분도 부담 없이 시작하실 수 있도록 상담, 일정 조율, 첫 레슨 안내를 한 흐름으로 이어 드립니다. 예약 시스템이 열리기 전에도 실제 진행 방식은 동일합니다.</p>
+            <p class="booking-placeholder__title">체험 예약하기를 누르면 네이버 체험 예약 페이지로 연결됩니다.</p>
+            <p class="booking-placeholder__text">예약 전 궁금한 점은 카카오톡 상담으로 남겨 주세요.</p>
 
             <ol class="program-process__list">
               <li class="program-process__step">
                 <span class="program-process__number">01</span>
                 <div class="program-process__body">
-                  <strong>카카오톡으로 상담 남기기</strong>
+                  <strong>체험 예약 또는 카카오톡 상담</strong>
                   <p>현재 고민, 원하는 곡, 가능한 시간대를 편하게 보내 주시면 됩니다.</p>
                 </div>
               </li>
@@ -760,10 +749,10 @@
               </li>
             </ol>
 
-            <!-- 첫 전환 채널을 카카오톡으로 고정한 이유는 상담·시간 조율·확정까지 한 스레드에서 이어지기 때문입니다. -->
+            <!-- P1에서는 네이버 체험 예약을 주 행동, 카카오톡 상담을 보조로 둡니다. -->
             <div class="location__map-actions">
-              <a href="https://open.kakao.com/o/seso1YLg" class="btn btn--primary" target="_blank" rel="noopener noreferrer">카카오톡으로 예약 문의</a>
-              <a href="#contact" class="btn btn--secondary">상담 안내 먼저 보기</a>
+              <a href="https://booking.naver.com/booking/13/bizes/1249695/items/6231823" class="btn btn--primary" target="_blank" rel="noopener noreferrer">체험 예약하기</a>
+          <a href="https://open.kakao.com/o/seso1YLg" class="btn btn--secondary" target="_blank" rel="noopener noreferrer">카카오톡 상담</a>
             </div>
           </div>
         </div>
@@ -790,7 +779,7 @@
             </svg>
             지금 바로 상담하기
           </a>
-          <a href="tel:+82-507-1377-4624" class="contact-cta__phone" aria-label="전화로 상담하기">
+          <a href="tel:0507-1377-4624" class="contact-cta__phone" aria-label="전화로 상담하기">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
               <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
             </svg>
@@ -811,7 +800,7 @@
       <div class="footer__inner">
         <div>
           <p class="footer__brand">
-            <img src="assets/brand/logo-horizontal-white.png" alt="EY보컬스튜디오" class="footer__logo-img" width="400" height="400">
+            <img src="assets/brand/logo-horizontal-white.png" alt="EY보컬스튜디오" class="footer__logo-img" width="871" height="225">
           </p>
           <div class="footer__info">
             <p>대표: 이성표 · 사업자등록번호: 105-92-10088</p>
