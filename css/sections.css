@@ -492,11 +492,18 @@
 .testimonial-card blockquote {
   height: auto;
 }
-.testimonial-card__quote {
+.testimonial-card__quote,
+.testimonial-card__summary {
   font-size: var(--text-body);
   line-height: var(--leading-relaxed);
   color: var(--color-white-75);
   text-wrap: pretty;
+}
+.testimonial-card__topic {
+  margin-bottom: var(--space-4);
+  font-size: var(--text-h3);
+  font-weight: 500;
+  color: var(--color-gold-light);
 }
 .testimonial-card__quote::before {
   content: "“";
@@ -856,7 +863,7 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
   .blog__grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
   .contact-cta__actions {
     flex-direction: row;
