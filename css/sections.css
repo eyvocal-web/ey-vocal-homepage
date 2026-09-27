@@ -492,18 +492,11 @@
 .testimonial-card blockquote {
   height: auto;
 }
-.testimonial-card__quote,
-.testimonial-card__summary {
+.testimonial-card__quote {
   font-size: var(--text-body);
   line-height: var(--leading-relaxed);
   color: var(--color-white-75);
   text-wrap: pretty;
-}
-.testimonial-card__topic {
-  margin-bottom: var(--space-4);
-  font-size: var(--text-h3);
-  font-weight: 500;
-  color: var(--color-gold-light);
 }
 .testimonial-card__quote::before {
   content: "“";
