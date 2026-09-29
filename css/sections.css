@@ -1135,6 +1135,11 @@
   line-height: var(--leading-relaxed);
   color: var(--color-gray-light);
 }
+.location__map-copy .location__map-note {
+  font-size: var(--text-small);
+  line-height: var(--leading-relaxed);
+  color: var(--color-gray-light);
+}
 .location__map-highlights {
   display: flex;
   flex-wrap: wrap;
@@ -1153,4 +1158,21 @@
   background: var(--color-white-08);
   font-size: var(--text-small);
   color: var(--color-white);
+}
+@media (max-width: 767px) {
+  #blog .location__details,
+  #location .location__details > div:first-child {
+    order: 1;
+  }
+  #blog .blog__grid,
+  #location .location__map {
+    order: 2;
+  }
+  #location .location__details {
+    display: contents;
+  }
+  #location .location__item,
+  #location .location__details > .location__map-actions {
+    order: 3;
+  }
 }
