@@ -811,46 +811,6 @@
   border-top: 1px solid var(--color-border);
   font-size: var(--text-xs);
 }
-/* 플로팅 CTA는 정보 탐색을 방해하지 않도록 평소에는 숨기고, 히어로 이탈 뒤에만 다시 노출합니다. */
-.floating-cta {
-  position: fixed;
-  right: var(--space-4);
-  bottom: calc(var(--space-6) + 64px);
-  z-index: 90;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-2);
-  min-height: 48px;
-  padding: var(--space-3) var(--space-4);
-  border-radius: var(--radius-full);
-  background: var(--color-kakao);
-  color: var(--color-kakao-text);
-  font-size: var(--text-small);
-  font-weight: 700;
-  box-shadow: var(--shadow-lg);
-  opacity: 0;
-  transform: translateY(20px);
-  transition:
-    opacity var(--duration-normal) var(--ease-out),
-    transform var(--duration-normal) var(--ease-out),
-    box-shadow var(--duration-normal) var(--ease-out);
-}
-.floating-cta span {
-  display: none;
-}
-.floating-cta.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-.floating-cta:hover,
-.floating-cta:focus-visible {
-  box-shadow: var(--shadow-xl);
-}
-.floating-cta svg {
-  width: 22px;
-  height: 22px;
-}
 .chat-text-link {
   align-self: center;
   min-height: 44px;
@@ -934,14 +894,8 @@
     flex-direction: row;
     flex-wrap: wrap;
   }
-  .floating-cta {
-    right: var(--space-8);
-  }
   .chat-launch { right: var(--space-8); }
   .chat-panel[open] { right: var(--space-8); }
-  .floating-cta span {
-    display: inline;
-  }
   .footer__inner {
     grid-template-columns: 1fr auto;
     align-items: start;

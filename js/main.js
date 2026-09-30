@@ -79,7 +79,6 @@
     initNav();
     initSmoothScroll();
     initRevealAnimations();
-    initFloatingCTA();
     initChatPanel();
     initTestimonials();
 
@@ -246,22 +245,6 @@
     }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
 
     reveals.forEach(function (el) { observer.observe(el); });
-  }
-
-  function initFloatingCTA() {
-    var fab = document.querySelector('.floating-cta');
-    if (!fab) return;
-
-    // 첫 화면에서는 메인 CTA와 경쟁하지 않게 숨기고, 히어로를 지난 뒤에만 재호출 수단으로 보여 줍니다.
-    var observer = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) fab.classList.remove('is-visible');
-        else fab.classList.add('is-visible');
-      });
-    }, { threshold: 0.4 });
-
-    var hero = document.querySelector('.hero');
-    if (hero) observer.observe(hero);
   }
 
   function initChatPanel() {
