@@ -99,6 +99,7 @@
 
   function initNav() {
     var nav = document.querySelector('.nav');
+    if (!nav) return;
     var toggle = document.querySelector('.nav__toggle');
     var mobileMenu = document.querySelector('.nav__mobile');
     var closeButton = mobileMenu ? mobileMenu.querySelector('.nav__close') : null;
