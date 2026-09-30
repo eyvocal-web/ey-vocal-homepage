@@ -1160,19 +1160,84 @@
   color: var(--color-white);
 }
 @media (max-width: 767px) {
-  #blog .location__details,
-  #location .location__details > div:first-child {
+  #blog .location__details {
     order: 1;
   }
-  #blog .blog__grid,
-  #location .location__map {
+  #blog .blog__grid {
     order: 2;
   }
-  #location .location__details {
-    display: contents;
+}
+
+.anchor-alias {
+  display: block;
+  height: 0;
+}
+.lesson-intro {
+  max-width: 47rem;
+  margin-bottom: var(--space-8);
+}
+.lesson-benefits {
+  display: grid;
+  gap: var(--space-3);
+}
+.lesson-benefits .instructor__credential {
+  display: grid;
+  gap: var(--space-2);
+}
+.lesson-benefits strong {
+  color: var(--color-white);
+}
+.lesson-benefits p {
+  color: var(--color-gray-light);
+}
+.testimonials__toggle {
+  margin-top: var(--space-6);
+}
+#testimonials .testimonial-card.reveal {
+  opacity: 1;
+  transform: none;
+}
+.testimonials__toggle[hidden] {
+  display: none;
+}
+.location-simple,
+.booking-simple {
+  display: grid;
+  gap: var(--space-6);
+}
+.location-simple__list {
+  display: grid;
+  gap: var(--space-3);
+}
+.booking-simple__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+.booking-simple .contact-cta__phone {
+  font-size: var(--text-body);
+}
+@media (max-width: 767px) {
+  .testimonials--enhanced:not(.is-expanded) .testimonials__grid > .testimonial-card:nth-child(n + 4) {
+    display: none;
   }
-  #location .location__item,
-  #location .location__details > .location__map-actions {
-    order: 3;
+  .booking-simple__actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+@media (min-width: 768px) {
+  .lesson-benefits {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .testimonials__toggle {
+    display: none;
+  }
+}
+@media (min-width: 1024px) {
+  #about .container,
+  .location-simple,
+  .booking-simple {
+    max-width: 56rem;
   }
 }
