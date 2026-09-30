@@ -23,18 +23,31 @@
     var nav = document.querySelector('.nav');
     var toggle = document.querySelector('.nav__toggle');
     var mobileMenu = document.querySelector('.nav__mobile');
+    var closeButton = mobileMenu ? mobileMenu.querySelector('.nav__close') : null;
     var mobileLinks = mobileMenu ? Array.from(mobileMenu.querySelectorAll('a')) : [];
+    var previousBodyOverflow = '';
+    var previousRootOverflow = '';
 
     // 모바일 메뉴는 단순 토글보다 접근성 손실이 커서, 포커스 이동과 스크롤 잠금을 한 함수에서 같이 관리합니다.
     function setMobileMenuState(isOpen, returnFocus) {
       if (!toggle || !mobileMenu) return;
+      var wasOpen = mobileMenu.classList.contains('is-open');
+      if (isOpen && !wasOpen) {
+        previousBodyOverflow = document.body.style.overflow;
+        previousRootOverflow = document.documentElement.style.overflow;
+        document.body.style.overflow = 'hidden';
+        document.documentElement.style.overflow = 'hidden';
+      } else if (!isOpen && wasOpen) {
+        document.body.style.overflow = previousBodyOverflow;
+        document.documentElement.style.overflow = previousRootOverflow;
+      }
       mobileMenu.hidden = !isOpen;
       mobileMenu.classList.toggle('is-open', isOpen);
       toggle.classList.toggle('is-active', isOpen);
       toggle.setAttribute('aria-expanded', String(isOpen));
       toggle.setAttribute('aria-label', isOpen ? '메뉴 닫기' : '메뉴 열기');
-      document.body.style.overflow = isOpen ? 'hidden' : '';
-      if (isOpen && mobileLinks[0]) mobileLinks[0].focus();
+      var firstControl = closeButton || mobileLinks[0];
+      if (isOpen && firstControl) firstControl.focus();
       if (!isOpen && returnFocus) toggle.focus();
     }
 
@@ -62,6 +75,12 @@
         setMobileMenuState(!mobileMenu.classList.contains('is-open'), false);
       });
 
+      if (closeButton) {
+        closeButton.addEventListener('click', function () {
+          closeMobileMenu(true);
+        });
+      }
+
       mobileLinks.forEach(function (link) {
         link.addEventListener('click', function () {
           closeMobileMenu(false);
@@ -79,7 +98,7 @@
         if (e.key !== 'Tab') return;
 
         // 메뉴가 dialog 역할을 갖기 때문에, 열린 동안 포커스가 바깥으로 새지 않게 최소한의 트랩을 유지합니다.
-        var focusable = [toggle].concat(mobileLinks).filter(function (el) {
+        var focusable = [closeButton].concat(mobileLinks).filter(function (el) {
           return el && !el.hasAttribute('disabled');
         });
         var first = focusable[0];

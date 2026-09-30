@@ -31,9 +31,11 @@
   --color-cream-glass-strong: rgba(17, 17, 17, 0.92);
   --color-charcoal-overlay: rgba(8, 8, 8, 0.72);
   --color-gold-20: rgba(200, 169, 110, 0.18);
+  --color-gold-30: rgba(200, 169, 110, 0.3);
   --color-border: rgba(245, 245, 240, 0.08);
   --color-border-strong: rgba(245, 245, 240, 0.16);
   --color-white-08: rgba(245, 245, 240, 0.08);
+  --color-white-04: rgba(245, 245, 240, 0.04);
   --color-white-10: rgba(245, 245, 240, 0.1);
   --color-white-12: rgba(245, 245, 240, 0.12);
   --color-white-18: rgba(245, 245, 240, 0.18);
@@ -74,6 +76,7 @@
   --space-2: 0.5rem;
   --space-3: 0.75rem;
   --space-4: 1rem;
+  --space-5: 1.25rem;
   --space-6: 1.5rem;
   --space-8: 2rem;
   --space-10: 2.5rem;
