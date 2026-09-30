@@ -6,6 +6,8 @@
 (function () {
   'use strict';
 
+  const CHAT_IFRAME_URL = 'https://app.eyvocal.com/chat?embed=1';
+
   // 외부 의존성을 늘리지 않고도 정적 랜딩의 인터랙션 요구를 충족하려고 단일 IIFE로 수명주기를 닫습니다.
   document.addEventListener('DOMContentLoaded', init);
 
@@ -14,6 +16,7 @@
     initSmoothScroll();
     initRevealAnimations();
     initFloatingCTA();
+    initChatPanel();
     initTestimonials();
 
     var yearEl = document.getElementById('current-year');
@@ -184,6 +187,35 @@
 
     var hero = document.querySelector('.hero');
     if (hero) observer.observe(hero);
+  }
+
+  function initChatPanel() {
+    var panel = document.getElementById('chat-panel');
+    var triggers = Array.from(document.querySelectorAll('.chat-trigger'));
+    if (!panel || !triggers.length) return;
+    var frame = panel.querySelector('iframe');
+    var closeButton = panel.querySelector('.chat-panel__close');
+    var lastTrigger = null;
+    var previousBodyOverflow = '';
+
+    triggers.forEach(function (trigger) {
+      trigger.addEventListener('click', function () {
+        lastTrigger = trigger;
+        if (!frame.src) frame.src = CHAT_IFRAME_URL;
+        previousBodyOverflow = document.body.style.overflow;
+        document.body.style.overflow = 'hidden';
+        panel.showModal();
+        triggers.forEach(function (item) { item.setAttribute('aria-expanded', 'true'); });
+        closeButton.focus();
+      });
+    });
+
+    closeButton.addEventListener('click', function () { panel.close(); });
+    panel.addEventListener('close', function () {
+      document.body.style.overflow = previousBodyOverflow;
+      triggers.forEach(function (item) { item.setAttribute('aria-expanded', 'false'); });
+      if (lastTrigger) lastTrigger.focus();
+    });
   }
 
   function initTestimonials() {

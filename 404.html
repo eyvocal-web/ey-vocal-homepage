@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>페이지를 찾을 수 없습니다 | EY보컬스튜디오</title>
   <meta name="robots" content="noindex">
-  <link rel="stylesheet" href="css/app.min.css">
+  <link rel="stylesheet" href="/css/app.min.css">
   <link rel="icon" type="image/png" href="assets/brand/logo-icon-black.png">
   <style>
     .error-page {
@@ -79,5 +79,11 @@
       </div>
     </div>
   </main>
+  <button type="button" class="chat-trigger chat-launch" aria-controls="chat-panel" aria-expanded="false">채팅 문의</button>
+  <dialog id="chat-panel" class="chat-panel" aria-label="상담 채팅">
+    <div class="chat-panel__header"><strong>채팅 문의</strong><button type="button" class="chat-panel__close" aria-label="채팅 닫기">닫기</button></div>
+    <iframe title="EY보컬스튜디오 상담 채팅" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+  </dialog>
+  <script src="/js/app.min.js" defer></script>
 </body>
 </html>
