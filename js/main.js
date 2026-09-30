@@ -6,22 +6,100 @@
 (function () {
   'use strict';
 
+  const CHAT_IFRAME_URL = 'https://app.eyvocal.com/chat?embed=1';
+  const EVENT_URL = 'https://popnjfhuuqwmgvrmehdp.supabase.co/rest/v1/rpc/log_site_event';
+  const PUBLIC_KEY = 'sb_publishable_BxoZks4s73GQuRg_afcJTg_RyVwAN1D';
+  const params = new URLSearchParams(location.search);
+  let internal = false;
+  let visitId = null;
+  let attribution = {};
+
+  try {
+    if (params.get('ey_internal') === '1') localStorage.setItem('ey_internal', '1');
+    if (params.get('ey_internal') === '0') localStorage.removeItem('ey_internal');
+    internal = localStorage.getItem('ey_internal') === '1';
+    if (internal) localStorage.setItem('va-disable', 'true');
+    else if (params.get('ey_internal') === '0') localStorage.removeItem('va-disable');
+    if (!internal) {
+      visitId = sessionStorage.getItem('ey_visit_id') || crypto.randomUUID();
+      sessionStorage.setItem('ey_visit_id', visitId);
+      attribution = JSON.parse(sessionStorage.getItem('ey_visit_attribution') || 'null') || {
+        utm_source: params.get('utm_source'),
+        utm_medium: params.get('utm_medium'),
+        utm_campaign: params.get('utm_campaign')
+      };
+      sessionStorage.setItem('ey_visit_attribution', JSON.stringify(attribution));
+    }
+  } catch (_) {
+    // Storage may be disabled; keep this page usable and avoid persistent identifiers.
+    internal = params.get('ey_internal') === '1';
+    if (!internal) visitId = crypto.randomUUID();
+  }
+
+  // Vercel's documented beforeSend hook also excludes internal page views.
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  window.va('beforeSend', function (event) { return internal ? null : event; });
+
+  function logEvent(event) {
+    if (internal || !visitId) return;
+    let referrerHost = null;
+    try {
+      if (document.referrer) {
+        const host = new URL(document.referrer).hostname.toLowerCase();
+        if (host !== 'eyvocal.com' && host !== 'www.eyvocal.com') referrerHost = host;
+      }
+    } catch (_) { /* Invalid referrer is omitted. */ }
+    const width = window.innerWidth;
+    const payload = {
+      p_visit_id: visitId,
+      p_event: event,
+      p_path: location.pathname,
+      p_referrer_host: referrerHost,
+      p_utm_source: attribution.utm_source || null,
+      p_utm_medium: attribution.utm_medium || null,
+      p_utm_campaign: attribution.utm_campaign || null,
+      p_device: width < 768 ? 'mobile' : width < 1024 ? 'tablet' : 'desktop'
+    };
+    try {
+      fetch(EVENT_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', apikey: PUBLIC_KEY, Authorization: 'Bearer ' + PUBLIC_KEY },
+        body: JSON.stringify(payload),
+        keepalive: true
+      }).catch(function () {});
+    } catch (_) { /* Statistics must never affect the page. */ }
+  }
+
   // 외부 의존성을 늘리지 않고도 정적 랜딩의 인터랙션 요구를 충족하려고 단일 IIFE로 수명주기를 닫습니다.
   document.addEventListener('DOMContentLoaded', init);
 
   function init() {
+    logEvent('page_view');
+    initTrackedLinks();
     initNav();
     initSmoothScroll();
     initRevealAnimations();
-    initFloatingCTA();
+    initChatPanel();
     initTestimonials();
 
     var yearEl = document.getElementById('current-year');
     if (yearEl) yearEl.textContent = new Date().getFullYear();
   }
 
+  function initTrackedLinks() {
+    document.addEventListener('click', function (event) {
+      const link = event.target.closest('a[href]');
+      if (!link) return;
+      const href = link.getAttribute('href') || '';
+      if (href === '#booking' || href.includes('booking.naver.com/')) logEvent('booking_click');
+      else if (href.startsWith('tel:')) logEvent('phone_click');
+      else if (href.startsWith('https://open.kakao.com/')) logEvent('kakao_click');
+    });
+  }
+
   function initNav() {
     var nav = document.querySelector('.nav');
+    if (!nav) return;
     var toggle = document.querySelector('.nav__toggle');
     var mobileMenu = document.querySelector('.nav__mobile');
     var closeButton = mobileMenu ? mobileMenu.querySelector('.nav__close') : null;
@@ -170,20 +248,34 @@
     reveals.forEach(function (el) { observer.observe(el); });
   }
 
-  function initFloatingCTA() {
-    var fab = document.querySelector('.floating-cta');
-    if (!fab) return;
+  function initChatPanel() {
+    var panel = document.getElementById('chat-panel');
+    var triggers = Array.from(document.querySelectorAll('.chat-trigger'));
+    if (!panel || !triggers.length) return;
+    var frame = panel.querySelector('iframe');
+    var closeButton = panel.querySelector('.chat-panel__close');
+    var lastTrigger = null;
+    var previousBodyOverflow = '';
 
-    // 첫 화면에서는 메인 CTA와 경쟁하지 않게 숨기고, 히어로를 지난 뒤에만 재호출 수단으로 보여 줍니다.
-    var observer = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) fab.classList.remove('is-visible');
-        else fab.classList.add('is-visible');
+    triggers.forEach(function (trigger) {
+      trigger.addEventListener('click', function () {
+        lastTrigger = trigger;
+        if (!frame.src) frame.src = CHAT_IFRAME_URL + (visitId ? '&vid=' + encodeURIComponent(visitId) : '');
+        logEvent('chat_open');
+        previousBodyOverflow = document.body.style.overflow;
+        document.body.style.overflow = 'hidden';
+        panel.showModal();
+        triggers.forEach(function (item) { item.setAttribute('aria-expanded', 'true'); });
+        closeButton.focus();
       });
-    }, { threshold: 0.4 });
+    });
 
-    var hero = document.querySelector('.hero');
-    if (hero) observer.observe(hero);
+    closeButton.addEventListener('click', function () { panel.close(); });
+    panel.addEventListener('close', function () {
+      document.body.style.overflow = previousBodyOverflow;
+      triggers.forEach(function (item) { item.setAttribute('aria-expanded', 'false'); });
+      if (lastTrigger) lastTrigger.focus();
+    });
   }
 
   function initTestimonials() {
