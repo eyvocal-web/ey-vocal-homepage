@@ -6,7 +6,6 @@
 (function () {
   'use strict';
 
-  const CHAT_IFRAME_URL = 'https://app.eyvocal.com/chat?embed=1';
   const EVENT_URL = 'https://popnjfhuuqwmgvrmehdp.supabase.co/rest/v1/rpc/log_site_event';
   const PUBLIC_KEY = 'sb_publishable_BxoZks4s73GQuRg_afcJTg_RyVwAN1D';
   const params = new URLSearchParams(location.search);
@@ -79,7 +78,6 @@
     initNav();
     initSmoothScroll();
     initRevealAnimations();
-    initChatPanel();
 
     var yearEl = document.getElementById('current-year');
     if (yearEl) yearEl.textContent = new Date().getFullYear();
@@ -246,36 +244,4 @@
 
     reveals.forEach(function (el) { observer.observe(el); });
   }
-
-  function initChatPanel() {
-    var panel = document.getElementById('chat-panel');
-    var triggers = Array.from(document.querySelectorAll('.chat-trigger'));
-    if (!panel || !triggers.length) return;
-    var frame = panel.querySelector('iframe');
-    var closeButton = panel.querySelector('.chat-panel__close');
-    var lastTrigger = null;
-    var previousBodyOverflow = '';
-
-    triggers.forEach(function (trigger) {
-      trigger.addEventListener('click', function () {
-        lastTrigger = trigger;
-        if (!frame.src) frame.src = CHAT_IFRAME_URL + (visitId ? '&vid=' + encodeURIComponent(visitId) : '');
-        logEvent('chat_open');
-        previousBodyOverflow = document.body.style.overflow;
-        document.body.style.overflow = 'hidden';
-        panel.showModal();
-        triggers.forEach(function (item) { item.setAttribute('aria-expanded', 'true'); });
-        closeButton.focus();
-      });
-    });
-
-    closeButton.addEventListener('click', function () { panel.close(); });
-    panel.addEventListener('close', function () {
-      document.body.style.overflow = previousBodyOverflow;
-      triggers.forEach(function (item) { item.setAttribute('aria-expanded', 'false'); });
-      if (lastTrigger) lastTrigger.focus();
-    });
-  }
-
-
 })();

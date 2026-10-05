@@ -35,6 +35,8 @@
   --accent: var(--ey-oak-400);
   --accent-text: var(--ey-oak-600);
   --accent-soft: var(--ey-oak-100);
+  --kakao-bg: #FEE500;
+  --kakao-text: #191919;
 
   --font: Pretendard, -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Segoe UI', Roboto, sans-serif;
   --fs-display: 40px;
