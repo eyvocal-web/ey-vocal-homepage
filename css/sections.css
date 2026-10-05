@@ -321,15 +321,15 @@
   min-width: 110px;
   min-height: 54px;
   padding: var(--sp-3) var(--sp-4);
-  border: 1px solid var(--primary);
+  border: 1.5px solid var(--primary);
   border-radius: var(--r-lg);
-  background: var(--primary);
-  color: var(--text-on-primary);
+  background: var(--surface);
+  color: var(--primary);
   font-size: var(--fs-body-sm);
   font-weight: 700;
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-lg);
 }
-.chat-launch:hover { background: var(--primary-hover); }
+.chat-launch:hover { background: var(--primary-soft); }
 .chat-panel[open] {
   position: fixed;
   inset: auto var(--sp-4) calc(var(--sp-6) + 66px) auto;
