@@ -80,7 +80,6 @@
     initSmoothScroll();
     initRevealAnimations();
     initChatPanel();
-    initTestimonials();
 
     var yearEl = document.getElementById('current-year');
     if (yearEl) yearEl.textContent = new Date().getFullYear();
@@ -278,18 +277,5 @@
     });
   }
 
-  function initTestimonials() {
-    var section = document.getElementById('testimonials');
-    var toggle = section ? section.querySelector('.testimonials__toggle') : null;
-    if (!section || !toggle) return;
-
-    section.classList.add('testimonials--enhanced');
-    toggle.hidden = false;
-    toggle.addEventListener('click', function () {
-      var expanded = section.classList.toggle('is-expanded');
-      toggle.setAttribute('aria-expanded', String(expanded));
-      toggle.textContent = expanded ? '후기 접기' : '후기 더 보기';
-    });
-  }
 
 })();
