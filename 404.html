@@ -6,7 +6,7 @@
   <title>페이지를 찾을 수 없습니다 | EY보컬스튜디오</title>
   <meta name="robots" content="noindex">
   <link rel="stylesheet" href="/css/app.min.css">
-  <link rel="icon" type="image/png" href="assets/brand/logo-icon-black.png">
+  <link rel="icon" type="image/png" href="/assets/brand/logo-icon-black.png">
   <style>
     .error-page {
       min-height: 100vh;
@@ -17,10 +17,10 @@
 
     .error-page__content {
       width: min(100%, 42rem);
-      padding: var(--space-12);
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-lg);
-      background: var(--color-panel);
+      padding: var(--sp-12);
+      border: 1px solid var(--border);
+      border-radius: var(--r-xl);
+      background: var(--surface);
       box-shadow: var(--shadow-md);
       text-align: center;
     }
@@ -28,22 +28,22 @@
     .error-page__logo {
       width: min(14rem, 52vw);
       height: auto;
-      margin: 0 auto var(--space-8);
+      margin: 0 auto var(--sp-8);
     }
 
     .error-page__actions {
       display: flex;
       flex-direction: column;
-      gap: var(--space-3);
+      gap: var(--sp-3);
       align-items: center;
-      margin-top: var(--space-8);
+      margin-top: var(--sp-8);
     }
 
     .error-page__caption {
-      margin-top: var(--space-6);
-      font-size: var(--text-small);
-      color: var(--color-white-60);
-      line-height: var(--leading-relaxed);
+      margin-top: var(--sp-6);
+      font-size: var(--fs-body-sm);
+      color: var(--text-2);
+      line-height: var(--lh-body);
     }
 
     @media (min-width: 640px) {
@@ -60,7 +60,7 @@
   <main id="main" class="section section--dark error-page">
     <div class="container">
       <div class="error-page__content">
-        <img src="assets/brand/logo-horizontal-white.png" alt="EY보컬스튜디오" class="error-page__logo" width="871" height="225">
+        <img src="/assets/brand/logo-horizontal-black.png" alt="EY보컬스튜디오" class="error-page__logo" width="871" height="225">
         <span class="section__label">404</span>
         <h1 class="section__title">찾으시는 페이지를 바로 열어 드리지 못했습니다</h1>
         <p class="section__subtitle text-center">
