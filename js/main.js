@@ -8,15 +8,20 @@
 
   const EVENT_URL = 'https://popnjfhuuqwmgvrmehdp.supabase.co/rest/v1/rpc/log_site_event';
   const PUBLIC_KEY = 'sb_publishable_BxoZks4s73GQuRg_afcJTg_RyVwAN1D';
+  const GEO_URL = '/api/geo';
+  const LIVE_HOSTS = ['eyvocal.com', 'www.eyvocal.com'];
   const params = new URLSearchParams(location.search);
+  // 성능 검사(127.0.0.1)·미리보기 주소에서 열린 화면은 실제 방문이 아니므로 통계에서 뺀다.
+  const liveHost = LIVE_HOSTS.indexOf(location.hostname) !== -1;
   let internal = false;
   let visitId = null;
   let attribution = {};
+  let geoPromise = null;
 
   try {
     if (params.get('ey_internal') === '1') localStorage.setItem('ey_internal', '1');
     if (params.get('ey_internal') === '0') localStorage.removeItem('ey_internal');
-    internal = localStorage.getItem('ey_internal') === '1';
+    internal = !liveHost || localStorage.getItem('ey_internal') === '1';
     if (internal) localStorage.setItem('va-disable', 'true');
     else if (params.get('ey_internal') === '0') localStorage.removeItem('va-disable');
     if (!internal) {
@@ -31,8 +36,35 @@
     }
   } catch (_) {
     // Storage may be disabled; keep this page usable and avoid persistent identifiers.
-    internal = params.get('ey_internal') === '1';
+    internal = !liveHost || params.get('ey_internal') === '1';
     if (!internal) visitId = crypto.randomUUID();
+  }
+
+  // 방문 지역(국가·시도·도시)은 세션당 한 번만 묻고, 늦거나 실패하면 지역 없이 기록한다.
+  function getGeo() {
+    if (geoPromise) return geoPromise;
+    let cached = null;
+    try { cached = JSON.parse(sessionStorage.getItem('ey_visit_geo') || 'null'); } catch (_) { cached = null; }
+    if (cached) {
+      geoPromise = Promise.resolve(cached);
+      return geoPromise;
+    }
+    const empty = { country: null, region: null, city: null };
+    const request = fetch(GEO_URL, { cache: 'no-store' })
+      .then(function (response) { return response.ok ? response.json() : empty; })
+      .then(function (geo) {
+        const clean = {
+          country: geo && geo.country || null,
+          region: geo && geo.region || null,
+          city: geo && geo.city || null
+        };
+        try { sessionStorage.setItem('ey_visit_geo', JSON.stringify(clean)); } catch (_) { /* 저장 불가여도 진행 */ }
+        return clean;
+      })
+      .catch(function () { return empty; });
+    const timeout = new Promise(function (resolve) { setTimeout(function () { resolve(empty); }, 1500); });
+    geoPromise = Promise.race([request, timeout]);
+    return geoPromise;
   }
 
   // Vercel's documented beforeSend hook also excludes internal page views.
@@ -59,14 +91,20 @@
       p_utm_campaign: attribution.utm_campaign || null,
       p_device: width < 768 ? 'mobile' : width < 1024 ? 'tablet' : 'desktop'
     };
-    try {
-      fetch(EVENT_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', apikey: PUBLIC_KEY, Authorization: 'Bearer ' + PUBLIC_KEY },
-        body: JSON.stringify(payload),
-        keepalive: true
-      }).catch(function () {});
-    } catch (_) { /* Statistics must never affect the page. */ }
+    function send(geo) {
+      payload.p_country = geo.country;
+      payload.p_region = geo.region;
+      payload.p_city = geo.city;
+      try {
+        fetch(EVENT_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', apikey: PUBLIC_KEY, Authorization: 'Bearer ' + PUBLIC_KEY },
+          body: JSON.stringify(payload),
+          keepalive: true
+        }).catch(function () {});
+      } catch (_) { /* Statistics must never affect the page. */ }
+    }
+    getGeo().then(send, function () { send({ country: null, region: null, city: null }); });
   }
 
   // 외부 의존성을 늘리지 않고도 정적 랜딩의 인터랙션 요구를 충족하려고 단일 IIFE로 수명주기를 닫습니다.
