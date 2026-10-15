@@ -338,3 +338,44 @@
   .footer__copyright { grid-column: 1 / -1; }
   .kakao-launch { right: var(--sp-8); }
 }
+
+/* ====== STUDIO PHOTOS (2026-10 최근 사진 보완) ====== */
+.studio-photo { position: relative; overflow: hidden; margin: 0; border: 1px solid var(--border); border-radius: var(--r-xl); background: var(--surface-2); box-shadow: var(--shadow-sm); }
+.studio-photo picture { position: absolute; inset: 0; display: block; }
+/* 사진 칸 높이는 aspect-ratio나 같은 줄 사진 높이가 정하고, 사진은 그 칸을 꽉 채웁니다. */
+.studio-photo img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.studio-photo figcaption { position: absolute; left: var(--sp-3); bottom: var(--sp-3); padding: var(--sp-1) var(--sp-3); border-radius: var(--r-pill); background: rgba(255, 255, 255, .92); color: var(--text); font-size: var(--fs-caption); font-weight: 700; line-height: 1.5; }
+
+.studio-gallery { display: grid; gap: var(--sp-5); margin-top: var(--sp-10); }
+.studio-gallery__intro { max-width: 40rem; }
+.studio-gallery__title { margin-bottom: var(--sp-2); color: var(--text); font-size: var(--fs-h2); font-weight: 700; line-height: var(--lh-tight); letter-spacing: var(--ls-tight); text-wrap: balance; }
+.studio-gallery__text { color: var(--text-2); }
+.studio-gallery__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--sp-3); }
+.studio-gallery__grid .studio-photo { aspect-ratio: 4 / 5; }
+.studio-gallery__grid .studio-photo--wide { grid-column: 1 / -1; aspect-ratio: 4 / 3; }
+
+.studio-feature { display: grid; gap: var(--sp-5); align-items: center; margin-top: var(--sp-10); }
+.studio-photo--feature { aspect-ratio: 1 / 1; }
+.studio-photo--feature img { object-position: center 70%; }
+.studio-feature__body { max-width: 34rem; }
+
+.location-photos { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: var(--sp-3); max-width: 760px; }
+.location-photos .studio-photo:first-child { aspect-ratio: 4 / 3; }
+.location-photos .studio-photo:last-child img { object-position: center 35%; }
+
+.booking-photo { aspect-ratio: 4 / 3; }
+
+@media (min-width: 768px) {
+  .studio-gallery__grid { grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr); }
+  .studio-gallery__grid .studio-photo { aspect-ratio: auto; }
+  .studio-gallery__grid .studio-photo--wide { grid-column: auto; aspect-ratio: 3 / 2; }
+  .studio-feature { grid-template-columns: minmax(0, 360px) minmax(0, 1fr); gap: var(--sp-10); }
+  .studio-photo--feature { aspect-ratio: 4 / 5; }
+}
+@media (min-width: 1024px) {
+  .booking-simple { grid-template-columns: minmax(0, 1fr) minmax(0, 480px); grid-template-areas: "copy photo" "actions photo" "hours photo"; column-gap: var(--sp-12); align-items: center; }
+  .booking-simple__copy { grid-area: copy; align-self: end; }
+  .booking-simple__actions { grid-area: actions; }
+  .contact-cta__hours { grid-area: hours; align-self: start; }
+  .booking-photo { grid-area: photo; }
+}
