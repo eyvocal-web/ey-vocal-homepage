@@ -59,10 +59,12 @@
       p_utm_source: attribution.utm_source || null,
       p_utm_medium: attribution.utm_medium || null,
       p_utm_campaign: attribution.utm_campaign || null,
-      p_device: width < 768 ? 'mobile' : width < 1024 ? 'tablet' : 'desktop',
-      p_section: section || null
+      p_device: width < 768 ? 'mobile' : width < 1024 ? 'tablet' : 'desktop'
     };
-    if (meta) payload.p_meta = cleanMeta(event, meta);
+    // Keep the legacy eight-key body; extension arguments are sent only when populated.
+    if (section) payload.p_section = section;
+    const cleanedMeta = meta && cleanMeta(event, meta);
+    if (cleanedMeta && Object.keys(cleanedMeta).length) payload.p_meta = cleanedMeta;
     try {
       fetch(EVENT_URL, {
         method: 'POST',
