@@ -105,14 +105,14 @@
       Object.keys(meta.dwell || {}).slice(0, 12).forEach(function (key) {
         const seconds = Math.floor(meta.dwell[key]);
         if (/^[a-z][a-z0-9-]{0,23}$/.test(key) && seconds > 0 && Number.isFinite(seconds)) {
-          dwell[key] = Math.min(seconds, 86400);
+          dwell[key] = seconds;
         }
       });
       clean = {
         max_scroll_pct: Math.max(0, Math.min(100, Math.floor(meta.max_scroll_pct || 0))),
         last_section: /^[a-z][a-z0-9-]{0,23}$/.test(meta.last_section || '') ? meta.last_section : null,
         dwell: dwell,
-        total_s: Math.max(0, Math.min(86400, Math.floor(meta.total_s || 0)))
+        total_s: Math.max(0, Math.floor(meta.total_s || 0))
       };
     } else if (typeof meta.target === 'string') {
       clean.target = meta.target.slice(0, 120);
