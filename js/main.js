@@ -234,6 +234,38 @@
       centreObserver = new IntersectionObserver(sample, {rootMargin: '-' + top + 'px 0px -' + (window.innerHeight - top - 1) + 'px 0px', threshold: 0});
       sections.forEach(function (el) { centreObserver.observe(el); });
     }
+    let progressObserver;
+    let progressMarkers;
+    function updateProgress() {
+      if (document.hidden) return;
+      const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+      maxScroll = Math.max(maxScroll, scrollable > 0 ? Math.min(100, window.scrollY / scrollable * 100) : 100);
+    }
+    function observeProgress() {
+      if (progressObserver) progressObserver.disconnect();
+      if (!progressMarkers) {
+        progressMarkers = document.createElement('div');
+        progressMarkers.setAttribute('aria-hidden', 'true');
+        progressMarkers.setAttribute('data-clarity-mask', 'true');
+        progressMarkers.style.cssText = 'position:absolute;top:0;left:0;width:1px;height:0;opacity:0;pointer-events:none';
+        document.body.appendChild(progressMarkers);
+      }
+      progressMarkers.replaceChildren();
+      const scrollable = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+      const step = scrollable / 100;
+      // Contiguous 1%-bands cross a one-pixel viewport-top observation line.
+      // Even a jump within one tall section records its maximum before scrolling back.
+      progressObserver = new IntersectionObserver(updateProgress, {
+        rootMargin: '0px 0px -' + Math.max(0, window.innerHeight - 1) + 'px 0px', threshold: 0
+      });
+      for (let i = 0; i < 100; i++) {
+        const marker = document.createElement('span');
+        marker.style.cssText = 'position:absolute;left:0;width:1px;top:' + Math.floor(i * step) + 'px;height:' + Math.max(1, Math.ceil(step) + 1) + 'px';
+        progressMarkers.appendChild(marker);
+        progressObserver.observe(marker);
+      }
+      updateProgress();
+    }
     function leave() {
       // Accrue the last visible interval before document.hidden prevents sampling.
       const now = performance.now();
@@ -255,9 +287,9 @@
       else { visibleSince = performance.now(); currentSince = visibleSince; sample(); observeSections(); }
     });
     window.addEventListener('pagehide', leave);
-    window.addEventListener('resize', function () { sample(); observeSections(); observeCentre(); });
+    window.addEventListener('resize', function () { sample(); observeSections(); observeCentre(); observeProgress(); });
     // ResizeObserver also handles FAQ/image layout changes.
-    if (window.ResizeObserver) new ResizeObserver(function () { sample(); observeSections(); observeCentre(); }).observe(document.body);
+    if (window.ResizeObserver) new ResizeObserver(function () { sample(); observeSections(); observeCentre(); observeProgress(); }).observe(document.body);
     document.querySelectorAll('details[data-track]').forEach(function (details) {
       details.addEventListener('toggle', function () {
         const key = details.getAttribute('data-track');
@@ -267,7 +299,7 @@
         }
       });
     });
-    sample(); observeSections(); observeCentre();
+    sample(); observeSections(); observeCentre(); observeProgress();
   }
 
   function initNav() {
