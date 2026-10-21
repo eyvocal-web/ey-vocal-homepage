@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://eyvocal.com/sitemap.xml
+Sitemap: https://www.eyvocal.com/sitemap.xml
