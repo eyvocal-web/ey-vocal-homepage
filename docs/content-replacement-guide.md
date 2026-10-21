@@ -83,9 +83,10 @@
 
 ## 3. Hero 배경 사진 교체
 
+> 2026-10 기준: 첫 화면(Hero)에는 배경 사진이 없고 네이버 리뷰 캡처(`assets/images/reviews/hero-R005*`)를 씁니다. 예전 배경 사진 `studio-hero*`는 삭제했습니다. 스튜디오 실사 사진은 `assets/images/studio/`에 있으며 목록·원본은 `README.md`의 '스튜디오 사진' 표를 봅니다. 아래 스펙은 Hero 배경 사진을 다시 쓰게 될 때만 참고합니다.
+
 현재 사용 파일:
-- `assets/images/studio-hero.webp`
-- `assets/images/studio-hero.jpg`
+- 없음 (예전: `assets/images/studio-hero.webp`, `assets/images/studio-hero.jpg` — 삭제됨)
 
 권장 스펙:
 
