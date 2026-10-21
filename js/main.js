@@ -18,6 +18,15 @@
   let pendingPageView = false;
   let pageViewTimer;
 
+  function createVisitId() {
+    if (typeof crypto.randomUUID === 'function') return crypto.randomUUID();
+    const bytes = crypto.getRandomValues(new Uint8Array(16));
+    bytes[6] = (bytes[6] & 15) | 64;
+    bytes[8] = (bytes[8] & 63) | 128;
+    const hex = Array.from(bytes, function (byte) { return byte.toString(16).padStart(2, '0'); }).join('');
+    return hex.slice(0, 8) + '-' + hex.slice(8, 12) + '-' + hex.slice(12, 16) + '-' + hex.slice(16, 20) + '-' + hex.slice(20);
+  }
+
   try {
     if (params.get('ey_internal') === '1') localStorage.setItem('ey_internal', '1');
     if (params.get('ey_internal') === '0') localStorage.removeItem('ey_internal');
@@ -25,7 +34,7 @@
     if (internal) localStorage.setItem('va-disable', 'true');
     else if (params.get('ey_internal') === '0') localStorage.removeItem('va-disable');
     if (!internal) {
-      visitId = sessionStorage.getItem('ey_visit_id') || crypto.randomUUID();
+      visitId = sessionStorage.getItem('ey_visit_id') || createVisitId();
       sessionStorage.setItem('ey_visit_id', visitId);
       attribution = JSON.parse(sessionStorage.getItem('ey_visit_attribution') || 'null') || {
         utm_source: params.get('utm_source'),
@@ -37,7 +46,7 @@
   } catch (_) {
     // Storage may be disabled; keep this page usable and avoid persistent identifiers.
     internal = !liveHost || params.get('ey_internal') === '1';
-    if (!internal) visitId = crypto.randomUUID();
+    if (!internal) visitId = createVisitId();
   }
 
   // Vercel's documented beforeSend hook also excludes internal page views.
@@ -376,7 +385,7 @@
       if (!open && returnFocus) toggle.focus();
     }
     toggle.addEventListener('click', function () { setOpen(menu.hidden, false); });
-    links.forEach(function (link) { link.addEventListener('click', function () { setOpen(false, true); }); });
+    links.forEach(function (link) { link.addEventListener('click', function () { setOpen(false, false); }); });
     document.addEventListener('keydown', function (event) {
       if (menu.hidden) return;
       if (event.key === 'Escape') { event.preventDefault(); setOpen(false, true); }
@@ -406,6 +415,8 @@
         event.preventDefault();
         history.replaceState(null, '', hash);
         target.scrollIntoView({behavior: 'instant', block: 'start'});
+        if (!target.hasAttribute('tabindex')) target.setAttribute('tabindex', '-1');
+        target.focus({preventScroll: true});
       });
     });
   }

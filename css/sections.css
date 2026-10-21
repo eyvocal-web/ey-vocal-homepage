@@ -1,5 +1,7 @@
 /* v16 approved layout. Values are transcribed from the PC and phone canvases. */
-.ey-page{background:#fff;color:#161618;font-family:Pretendard,-apple-system,'Apple SD Gothic Neo',sans-serif;letter-spacing:-.01em;word-break:keep-all;-webkit-font-smoothing:antialiased;min-width:0;container-type:inline-size;line-height:normal}
+.ey-page .ey-duo{display:flex;flex-wrap:wrap;gap:12px}
+.ey-page{background:#fff;color:#161618;font-family:Pretendard,-apple-system,"Apple SD Gothic Neo",sans-serif;letter-spacing:-.01em;word-break:keep-all;-webkit-font-smoothing:antialiased;min-width:0;container-type:inline-size;line-height:normal}
+.ey-page main{display:flex;flex-direction:column;gap:12px;padding:0 12px}
 .ey-page *{box-sizing:content-box}
 .ey-page img{max-width:none}
 .ey-page svg{flex-shrink:0}
@@ -27,7 +29,7 @@
 .ey-page .header-7 { display: inline-flex; align-items: center; min-height: 44px; color: #161618; text-decoration: none }
 .ey-page .header-8 { display: inline-flex; align-items: center; min-height: 44px; color: #161618; text-decoration: none }
 .ey-page .header-9 { display: inline-flex; align-items: center; height: 44px; padding: 0 18px; border-radius: 999px; background: #4A5F5E; color: #FFFFFF; font-size: 14px; font-weight: 600; text-decoration: none }
-.ey-page .header-10 { position: relative }
+
 .ey-page .header-11 { width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; border-radius: 999px }
 .ey-page .header-14 { position: absolute; right: 0; top: 50px; z-index: 20; width: 260px; box-sizing: border-box; padding: 10px; background: #FFFFFF; border-radius: 18px; box-shadow: 0 12px 32px rgba(22,22,24,0.16), 0 0 0 1px #DCDCE1; display: flex; flex-direction: column }
 .ey-page .header-15 { display: flex; align-items: center; min-height: 48px; padding: 0 16px; border-radius: 12px; color: #161618; font-size: 17px; text-decoration: none }
@@ -38,8 +40,7 @@
 .ey-page .hero-0 { background: #F5F5F7; border-radius: 24px; padding: 72px 24px 48px; display: flex; flex-direction: column; align-items: center; text-align: center }
 .ey-page .hero-1 { margin: 0; font-size: 17px; font-weight: 600; color: #7E6440 }
 .ey-page .hero-2 { margin: 12px 0 0; font-size: var(--t-hero); line-height: 1.15; font-weight: 600; letter-spacing: -0.03em }
-.ey-page .hero-3 { display: inline-block }
-.ey-page .hero-4 { display: inline-block }
+
 .ey-page .hero-5 { margin-top: 28px; display: flex; gap: 12px; flex-wrap: wrap; justify-content: center }
 .ey-page .hero-6 { display: inline-flex; align-items: center; justify-content: center; height: 44px; padding: 0 22px; border-radius: 999px; background: #4A5F5E; color: #FFFFFF; font-size: 17px; font-weight: 600; text-decoration: none; box-sizing: border-box }
 .ey-page .hero-7 { display: inline-flex; align-items: center; justify-content: center; height: 44px; padding: 0 22px; border-radius: 999px; background: transparent; color: #4A5F5E; box-shadow: inset 0 0 0 1.5px #4A5F5E; font-size: 17px; font-weight: 600; text-decoration: none; box-sizing: border-box }
@@ -198,10 +199,12 @@
 @media(min-width:640px){.kakao-launch{right:var(--sp-8)}}
 @media(max-width:1068px){.ey-page .ey-nav{display:none!important}.ey-page .ey-burger{display:block}}
 @media(max-width:734px){
+.ey-page main{padding:0}
+.ey-page .ey-duo{flex-direction:column}
 .ey-page>*{--t-hero:32px;--t-sec:30px;--t-tile:28px;--t-line:19px;--t-num:50px}
 .ey-page .header-0 { min-height:0;position: relative; z-index: 20; height: 52px; display: flex; align-items: center; justify-content: space-between; padding: 0 8px 0 16px }
 .ey-page .header-1 { display: contents; }
-.ey-page .header-2 { display: flex; align-items: center; min-height: 44px }
+
 .ey-page .header-3 { display: block; height: 24px; width: auto }
 .ey-page .header-4 { position: absolute; right: 0; top: 48px; z-index: 20; width: 260px; box-sizing: border-box; padding: 10px; background: #FFFFFF; border-radius: 18px; box-shadow: 0 12px 32px rgba(22,22,24,0.16), 0 0 0 1px #DCDCE1; display: flex; flex-direction: column }
 .ey-page .header-5 { display: flex; align-items: center; min-height: 48px; padding: 0 16px; border-radius: 12px; color: #161618; font-size: 17px; text-decoration: none }
@@ -209,8 +212,7 @@
 .ey-page .header-7 { display: flex; align-items: center; min-height: 48px; padding: 0 16px; border-radius: 12px; color: #161618; font-size: 17px; text-decoration: none }
 .ey-page .header-8 { display: flex; align-items: center; min-height: 48px; padding: 0 16px; border-radius: 12px; color: #161618; font-size: 17px; text-decoration: none }
 .ey-page .header-9 { padding:0;display: flex; align-items: center; justify-content: center; height: 48px; margin-top: 6px; border-radius: 999px; background: #4A5F5E; color: #FFFFFF; font-size: 17px; font-weight: 600; text-decoration: none }
-.ey-page .header-10 { position: relative }
-.ey-page .header-11 { width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; border-radius: 999px }
+
 .ey-page .hero-0 { background: #F5F5F7; border-radius: 0; padding: 36px 8px 24px; display: flex; flex-direction: column; align-items: center; text-align: center }
 .ey-page .hero-1 { margin: 0; font-size: 15px; line-height: 1.45; font-weight: 600; color: #7E6440 }
 .ey-page .hero-2 { margin: 10px 0 0; font-size: 32px; line-height: 1.2; font-weight: 600; letter-spacing: -0.03em }
@@ -219,7 +221,7 @@
 .ey-page .hero-7 { display: inline-flex; align-items: center; justify-content: center; height: 44px; padding: 0 18px; border-radius: 999px; background: transparent; color: #4A5F5E; box-shadow: inset 0 0 0 1.5px #4A5F5E; font-size: 16px; font-weight: 600; text-decoration: none; box-sizing: border-box }
 .ey-page .hero-8 { max-width:none;margin: 28px 0 0; width: 100% }
 .ey-page .hero-9 { margin: 0 0 8px; text-align: left; padding-left: 6px; font-size: 13px; font-weight: 600; color: #5E5E64 }
-.ey-page .hero-10 { display: inline-flex; align-items: center; min-height: 44px; font-size: 14px; font-weight: 600; text-decoration: none }
+
 .ey-page .hero-11 { display: block; width: 100%; height: auto; border-radius: 16px }
 .ey-page .hero-12 { display: inline-flex; align-items: center; min-height: 44px; font-size: 14px; font-weight: 600; text-decoration: none }
 .ey-page .reviews-0 { background: #F4ECDF; border-radius: 0; padding: 48px 12px }
@@ -252,11 +254,11 @@
 .ey-page .numbers-2 { margin-top: 32px; display: flex; justify-content: center; gap: 28px }
 .ey-page .numbers-4 { margin: 0; font-size: 50px; line-height: 1; font-weight: 600; letter-spacing: -0.04em }
 .ey-page .numbers-5 { font-size: 17px; font-weight: 600; vertical-align: top; margin-left: 2px }
-.ey-page .numbers-6 { display: inline-block; padding: 14px 20px; margin: -14px -20px; text-decoration: none }
+
 .ey-page .numbers-7 { margin: 10px 0 0; font-size: 14px; color: #5E5E64 }
 .ey-page .numbers-9 { margin: 0; font-size: 50px; line-height: 1; font-weight: 600; letter-spacing: -0.04em }
 .ey-page .numbers-10 { font-size: 17px; font-weight: 600; vertical-align: top; margin-left: 2px }
-.ey-page .numbers-11 { display: inline-block; padding: 14px 20px; margin: -14px -20px; text-decoration: none }
+
 .ey-page .numbers-12 { margin: 10px 0 0; font-size: 14px; color: #5E5E64 }
 .ey-page .lesson-0 { background: #F5F5F7; border-radius: 0; padding: 48px 16px 0; display: flex; flex-direction: column; align-items: center; text-align: center; overflow: hidden }
 .ey-page .lesson-1 { margin: 0; font-size: 32px; line-height: 1.2; font-weight: 600; letter-spacing: -0.03em }
@@ -265,11 +267,11 @@
 .ey-page .lesson-4 { display: inline-flex; align-items: center; justify-content: center; height: 44px; padding: 0 18px; border-radius: 999px; background: #4A5F5E; color: #FFFFFF; font-size: 16px; font-weight: 600; text-decoration: none; box-sizing: border-box }
 .ey-page .lesson-5 { display: inline-flex; align-items: center; justify-content: center; height: 44px; padding: 0 18px; border-radius: 999px; background: transparent; color: #4A5F5E; box-shadow: inset 0 0 0 1.5px #4A5F5E; font-size: 16px; font-weight: 600; text-decoration: none; box-sizing: border-box }
 .ey-page .lesson-6 { max-width:none;display: block; margin: 36px -16px 0; width: calc(100% + 32px); height: 270px; object-fit: cover; object-position: 50% 45%; border-radius: 0 }
-.ey-page .gear-0 { flex:0 1 auto;min-width:0;min-height: 500px; box-sizing: border-box; background: #F4ECDF; border-radius: 0; padding: 44px 20px 0; display: flex; flex-direction: column; align-items: center; text-align: center; overflow: hidden }
+.ey-page .gear-0 { flex:0 0 auto;width:100%;min-width:0;min-height: 500px; box-sizing: border-box; background: #F4ECDF; border-radius: 0; padding: 44px 20px 0; display: flex; flex-direction: column; align-items: center; text-align: center; overflow: hidden }
 .ey-page .gear-1 { margin: 0; font-size: 28px; line-height: 1.25; font-weight: 600; letter-spacing: -0.03em }
 .ey-page .gear-3 { max-width:none;margin: 12px 0 32px; font-size: 16px; line-height: 1.55; color: #5E5E64 }
 .ey-page .gear-4 { max-width:none;display: block; margin: auto -20px 0; width: calc(100% + 40px); height: 280px; object-fit: cover; object-position: 40% 70%; border-radius: 0 }
-.ey-page .practice-0 { flex:0 1 auto;min-width:0;min-height: 500px; box-sizing: border-box; background: #F5F5F7; border-radius: 0; padding: 44px 20px 0; display: flex; flex-direction: column; align-items: center; text-align: center; overflow: hidden }
+.ey-page .practice-0 { flex:0 0 auto;width:100%;min-width:0;min-height: 500px; box-sizing: border-box; background: #F5F5F7; border-radius: 0; padding: 44px 20px 0; display: flex; flex-direction: column; align-items: center; text-align: center; overflow: hidden }
 .ey-page .practice-1 { margin: 0; font-size: 28px; line-height: 1.25; font-weight: 600; letter-spacing: -0.03em }
 .ey-page .practice-3 { max-width:none;margin: 12px 0 32px; font-size: 16px; line-height: 1.55; color: #5E5E64 }
 .ey-page .practice-4 { max-width:none;display: block; margin: auto -20px 0; width: calc(100% + 40px); height: 280px; object-fit: cover; object-position: 50% 60%; border-radius: 0 }
@@ -297,28 +299,28 @@
 .ey-page .faq-1 { display: contents; }
 .ey-page .faq-2 { flex:0 1 auto;margin: 0 0 24px; font-size: 28px; line-height: 1.25; font-weight: 600; letter-spacing: -0.03em }
 .ey-page .faq-4 { flex:0 1 auto;min-width:0;border-top: 1px solid #DCDCE1 }
-.ey-page .faq-5 { border-bottom: 1px solid #DCDCE1 }
+
 .ey-page .faq-6 { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 18px 2px; font-size: 16px; font-weight: 600 }
 .ey-page .faq-9 { margin: 0; padding: 0 2px 18px; font-size: 15px; line-height: 1.6; color: #5E5E64 }
-.ey-page .faq-10 { border-bottom: 1px solid #DCDCE1 }
+
 .ey-page .faq-11 { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 18px 2px; font-size: 16px; font-weight: 600 }
 .ey-page .faq-14 { margin: 0; padding: 0 2px 18px; font-size: 15px; line-height: 1.6; color: #5E5E64 }
-.ey-page .faq-15 { border-bottom: 1px solid #DCDCE1 }
+
 .ey-page .faq-16 { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 18px 2px; font-size: 16px; font-weight: 600 }
 .ey-page .faq-19 { margin: 0; padding: 0 2px 18px; font-size: 15px; line-height: 1.6; color: #5E5E64 }
-.ey-page .faq-20 { border-bottom: 1px solid #DCDCE1 }
+
 .ey-page .faq-21 { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 18px 2px; font-size: 16px; font-weight: 600 }
 .ey-page .faq-24 { margin: 0; padding: 0 2px 18px; font-size: 15px; line-height: 1.6; color: #5E5E64 }
-.ey-page .faq-25 { border-bottom: 1px solid #DCDCE1 }
+
 .ey-page .faq-26 { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 18px 2px; font-size: 16px; font-weight: 600 }
 .ey-page .faq-29 { margin: 0; padding: 0 2px 18px; font-size: 15px; line-height: 1.6; color: #5E5E64 }
-.ey-page .faq-30 { border-bottom: 1px solid #DCDCE1 }
+
 .ey-page .faq-31 { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 18px 2px; font-size: 16px; font-weight: 600 }
 .ey-page .faq-34 { margin: 0; padding: 0 2px 18px; font-size: 15px; line-height: 1.6; color: #5E5E64 }
-.ey-page .faq-35 { border-bottom: 1px solid #DCDCE1 }
+
 .ey-page .faq-36 { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 18px 2px; font-size: 16px; font-weight: 600 }
 .ey-page .faq-39 { margin: 0; padding: 0 2px 18px; font-size: 15px; line-height: 1.6; color: #5E5E64 }
-.ey-page .faq-40 { border-bottom: 1px solid #DCDCE1 }
+
 .ey-page .faq-41 { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 18px 2px; font-size: 16px; font-weight: 600 }
 .ey-page .faq-44 { margin: 0; padding: 0 2px 18px; font-size: 15px; line-height: 1.6; color: #5E5E64 }
 .ey-page .blog-0 { padding: 56px 8px }
@@ -348,7 +350,7 @@
 .ey-page .booking-4 { display: inline-flex; align-items: center; justify-content: center; height: 44px; padding: 0 18px; border-radius: 999px; background: #4A5F5E; color: #FFFFFF; font-size: 16px; font-weight: 600; text-decoration: none; box-sizing: border-box }
 .ey-page .booking-5 { display: inline-flex; align-items: center; justify-content: center; height: 44px; padding: 0 18px; border-radius: 999px; background: transparent; color: #4A5F5E; box-shadow: inset 0 0 0 1.5px #4A5F5E; font-size: 16px; font-weight: 600; text-decoration: none; box-sizing: border-box }
 .ey-page .booking-6 { margin: 16px 0 0; font-size: 14px; line-height: 1.6; color: #5E5E64 }
-.ey-page .booking-7 { display: inline-flex; align-items: center; min-height: 44px; font-weight: 600 }
+
 .ey-page .booking-8 { max-width:none;display: block; margin: 36px -16px 0; width: calc(100% + 32px); height: 240px; object-fit: cover; object-position: 50% 55%; border-radius: 0 }
 .ey-page .footer-0 { margin-top: 12px; background: #F5F5F7; padding: 32px 20px 44px }
 .ey-page .footer-1 { display: contents; }
@@ -358,7 +360,7 @@
 .ey-page .footer-7 { display: block; height: 20px; width: auto }
 .ey-page .footer-8 { margin: 14px 0 0; font-size: 12px; line-height: 1.7; color: #5E5E64 }
 .ey-page .footer-10 { margin: 4px 0 0; font-size: 12px; line-height: 1.7; color: #5E5E64 }
-.ey-page .footer-11 { display: inline-flex; align-items: center; min-height: 44px; font-weight: 600; color: #161618; text-decoration: none }
+
 .ey-page .footer-12 { margin: 4px 0 0; font-size: 11px; color: #5E5E64 }
 
 .ey-page .phone-break{display:block}
@@ -371,7 +373,7 @@
 .ey-page .hero-review img{grid-column:1/-1;grid-row:2}
 .ey-page .hero-review>a:first-of-type{grid-column:2;grid-row:3;margin:12px 6px 0 0;font-size:14px}
 .ey-page .hero-review>a:last-of-type{grid-column:1;grid-row:3;justify-self:start;margin:12px 0 0 6px;font-size:14px}
-.ey-page .ey-hero h1 span{display:block}
+
 .ey-page .ey-reviews>div{display:contents}
 .ey-page .ey-process .process-copy{display:block}
 .ey-page .ey-process li>p{flex:0 0 28px;font-size:15px;line-height:1.6;font-weight:600;color:#7E6440;margin:0}
@@ -404,9 +406,7 @@
 /* The phone canvas is edge to edge; aliases have no layout footprint. */
 .ey-page section{position:relative}
 .ey-page .anchor-alias{position:absolute;top:0;left:0;width:0;height:0}
-@media(max-width:734px){.ey-page main{padding:0}}
-.ey-page main{display:flex;flex-direction:column;gap:12px;padding:0 12px}
-@media(max-width:734px){.ey-page main{padding:0}}
+
 @media(max-width:734px){
   .ey-page .ey-reviews img+img{margin-top:12px}
   .ey-page .ey-location>div{display:flex;gap:10px;justify-content:center;margin-top:22px}
