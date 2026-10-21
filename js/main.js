@@ -14,6 +14,9 @@
   let internal = false;
   let visitId = null;
   let attribution = {};
+  let geo = {};
+  let pendingPageView = false;
+  let pageViewTimer;
 
   try {
     if (params.get('ey_internal') === '1') localStorage.setItem('ey_internal', '1');
@@ -41,7 +44,60 @@
   window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
   window.va('beforeSend', function (event) { return internal ? null : event; });
 
+  function flushPageView() {
+    if (!pendingPageView) return;
+    pendingPageView = false;
+    clearTimeout(pageViewTimer);
+    sendEvent('page_view');
+  }
+
+  function initVisit() {
+    if (internal || !visitId) return;
+    pendingPageView = true;
+    pageViewTimer = setTimeout(flushPageView, 800);
+    window.addEventListener('pagehide', flushPageView);
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) flushPageView();
+    });
+    function cleanGeo(value) {
+      const result = {};
+      ['country', 'region', 'city'].forEach(function (key, i) {
+        if (value && typeof value[key] === 'string' && value[key].trim()) {
+          result[key] = value[key].trim().slice(0, [2, 10, 60][i]);
+        }
+      });
+      return result;
+    }
+    try {
+      const cached = sessionStorage.getItem('ey_visit_geo');
+      if (cached !== null) {
+        const record = JSON.parse(cached);
+        if (record.visit === visitId) {
+          geo = cleanGeo(record.geo);
+          flushPageView();
+          return;
+        }
+      }
+      // Record the attempt before fetching so failure/reload never retries this visit.
+      sessionStorage.setItem('ey_visit_geo', JSON.stringify({visit: visitId, geo: {}}));
+    } catch (_) { /* Storage can be unavailable; this document still attempts only once. */ }
+    fetch('/api/geo').then(function (response) {
+      if (!response.ok) throw new Error('geo unavailable');
+      return response.json();
+    }).then(function (value) {
+      geo = cleanGeo(value);
+      try { sessionStorage.setItem('ey_visit_geo', JSON.stringify({visit: visitId, geo: geo})); } catch (_) {}
+      flushPageView();
+    }).catch(flushPageView);
+  }
+
   function logEvent(event, section, meta) {
+    if (internal || !visitId) return;
+    flushPageView();
+    sendEvent(event, section, meta);
+  }
+
+  function sendEvent(event, section, meta) {
     if (internal || !visitId) return;
     let referrerHost = null;
     try {
@@ -62,6 +118,9 @@
       p_device: width < 768 ? 'mobile' : width < 1024 ? 'tablet' : 'desktop'
     };
     // Keep the legacy eight-key body; extension arguments are sent only when populated.
+    ['country', 'region', 'city'].forEach(function (key) {
+      if (geo[key]) payload['p_' + key] = geo[key];
+    });
     if (section) payload.p_section = section;
     const cleanedMeta = meta && cleanMeta(event, meta);
     if (cleanedMeta && Object.keys(cleanedMeta).length) payload.p_meta = cleanedMeta;
@@ -79,7 +138,7 @@
   document.addEventListener('DOMContentLoaded', init);
 
   function init() {
-    logEvent('page_view');
+    initVisit();
     initSectionTracking();
     initTrackedLinks();
     document.querySelectorAll('iframe, input, textarea, select').forEach(function (el) {
