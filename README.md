@@ -108,3 +108,9 @@ Live Server 확장 설치 → `index.html` 우클릭 → Open with Live Server
 - **GitHub Pages**: `main` 브랜치 push 후 Pages 설정
 - **Netlify / Vercel**: 레포 연결, 설정 없이 배포
 - **일반 웹호스팅**: FTP 업로드
+
+### 새 홈페이지 시안 v16 (Draft)
+
+`codex/apple-redesign-2026-10`은 최신 main에서 칸별 방문 기록기(#7)와 실사 사진 브랜치를 merge한 미리보기입니다. 734px 이하에는 폰 시안, 1069px 이상에는 PC 시안을 적용하고 중간 폭에는 PC 레이아웃과 접이식 메뉴를 씁니다. 화면 원본은 `index.html`·`css/sections.css`이며 JS 기록기는 #7 계약을 유지합니다. 수정 후 `node scripts/build-minified-assets.mjs`로 배포 파일을 갱신합니다.
+
+시험 근거·시안 비교·미리보기 확인 목록은 `/Users/eylocal/Documents/Codex/2026-10-21/새 홈페이지 구현/RESULT.md`와 같은 폴더의 `work/`에 있습니다. main 반영 전에는 Claude의 독립 검토와 #7의 DB 선행 조건 확인이 필요합니다. 이 작업에서는 운영 DB를 조회하거나 변경하지 않았습니다.
