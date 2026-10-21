@@ -411,3 +411,5 @@
   .ey-page .ey-reviews img+img{margin-top:12px}
   .ey-page .ey-location>div{display:flex;gap:10px;justify-content:center;margin-top:22px}
 }
+/* Expand menu hit areas to 44px without moving the approved text positions. */
+.ey-page .ey-nav>a:not([href="#booking"]){padding-inline:12px;margin-inline:-12px}
