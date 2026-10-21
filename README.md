@@ -55,16 +55,18 @@ Live Server 확장 설치 → `index.html` 우클릭 → Open with Live Server
 
 ### 스튜디오 사진 (`assets/images/`)
 
-현재 운영 자산은 히어로 원본/800px 파생본과 OG 이미지로 정리되어 있습니다. 페이지에서는 `<picture>`로 WebP를 우선 로드하고 JPG를 fallback으로 사용합니다.
+스튜디오 실사 사진은 `assets/images/studio/`에 있습니다(2026-09-28·10-07 촬영본, 2026-10 반영). 페이지에서는 폭별 `srcset`으로 WebP를 로드합니다. 가로 사진은 640/1280px, 세로 사진은 480/960px입니다. 미사용 복도·인터페이스 사진과 원본 JPG는 배포에서 제외했으며 사진 브랜치 `e286106`에 남아 있습니다.
 
-| 파일 | 원본 | 용도 |
+| 파일 | 원본(바탕화면 `이천 보컬학원 (비사이드단독)/`) | 위치 |
 |------|------|------|
-| `studio-hero.jpg` | 이천 M보컬학원26.JPG | 히어로 배경 |
-| `studio-hero-800.jpg` | `studio-hero.jpg` 리사이즈 | 모바일용 히어로 변형 |
-| `og-image.png` | 브랜드 배경 + 로고 합성 | Open Graph / 공유 썸네일 |
+| `studio/lesson-room` | 04. 공간_레슨룸 `…녹음 책상·모니터암·에어컨_20251202_캐논28` (최근 컷은 책상 선 정리가 안 돼 교체) | 수업 방식 · 레슨실 |
+| `studio/lesson-mic` | 05. 장비 클로즈업 `…슈어 마이크·KRK 스피커_20260928_224555` | 수업 방식 · 레슨실 |
+| `studio/practice-room` | 08. 공간_연습실 `…연습실4번_책상·모니터·전신거울 전경_20260928_224127` | 수업 방식 · 연습실 |
+| `studio/entrance-sign` | 01. 공간_입구·현관 `…교습소 간판 정면_20261007_140308` | 오시는 길 |
+| `studio/lounge` | 02. 공간_대기실·라운지 `…주간 통창·소파·유리테이블 전경_20261007_135850` (창밖 간판·탁자 위 종이는 흐림 처리) | 체험 예약 |
+| `og-image-2026-10.jpg` | `studio/lesson-room` 원본 + 로고 배지, 1200×630 | Open Graph / 공유 썸네일 |
 
-원본 출처: `EY보컬스튜디오 사진/`
-모든 사진은 웹용으로 리사이즈됨 (히어로 1600px, 모바일 800px).
+가구 들이기 전(2025-12) 빈 공간 사진(`studio-hero*`)과 어두운 디자인 시절 `og-image.png`는 2026-10에 지웠습니다. 창밖 다른 가게 간판·결제 QR·가사지·수강생 얼굴이 크게 보이는 사진은 쓰지 않습니다.
 
 ## 콘텐츠 확정 상태
 
@@ -104,3 +106,9 @@ Live Server 확장 설치 → `index.html` 우클릭 → Open with Live Server
 - **GitHub Pages**: `main` 브랜치 push 후 Pages 설정
 - **Netlify / Vercel**: 레포 연결, 설정 없이 배포
 - **일반 웹호스팅**: FTP 업로드
+
+### 새 홈페이지 시안 v16 (Draft)
+
+`codex/apple-redesign-2026-10`은 최신 main에서 칸별 방문 기록기(#7)와 실사 사진 브랜치를 merge한 미리보기입니다. 734px 이하에는 폰 시안, 1069px 이상에는 PC 시안을 적용하고 중간 폭에는 PC 레이아웃과 접이식 메뉴를 씁니다. 화면 원본은 `index.html`·`css/sections.css`이며 JS 기록기는 #7 계약을 유지합니다. 수정 후 `node scripts/build-minified-assets.mjs`로 배포 파일을 갱신합니다.
+
+시험 근거·시안 비교·미리보기 확인 목록은 `/Users/eylocal/Documents/Codex/2026-10-21/새 홈페이지 구현/RESULT.md`와 같은 폴더의 `work/`에 있습니다. main 반영 전에는 Claude의 독립 검토와 #7의 DB 선행 조건 확인이 필요합니다. 이 작업에서는 운영 DB를 조회하거나 변경하지 않았습니다.
