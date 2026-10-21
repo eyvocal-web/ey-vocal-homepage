@@ -309,6 +309,7 @@
 .footer__brand { margin-bottom: var(--sp-4); }
 .footer__logo-img { width: auto; height: 30px; }
 .footer__info { display: grid; gap: var(--sp-1); }
+.footer__privacy { display: inline-flex; align-items: center; min-height: var(--tap-min); color: inherit; text-decoration: underline; text-underline-offset: 0.2em; }
 .footer__social { display: flex; gap: var(--sp-3); }
 .footer__social a { display: flex; align-items: center; justify-content: center; width: var(--tap-min); min-height: var(--tap-min); border: 1px solid var(--border-strong); border-radius: var(--r-lg); background: var(--surface); color: var(--primary); }
 .footer__social svg { width: 20px; height: 20px; }
