@@ -16,4 +16,4 @@ The head contains a commented-out Clarity loader, with production/internal-devic
 
 Tests and captured payloads stay outside the repository in the handoff work/ folder. Supabase requests must always be intercepted in local browser tests. The live website must only be opened with `?ey_internal=1`.
 
-v16 click target: `nav-booking` means an in-page navigation to `#booking` (desktop or mobile menu), while `hero-booking`, `lesson-booking` and `booking-booking` mean outbound Naver booking clicks. All retain `booking_click`; none indicate a completed booking. FAQ keys and the twelve section keys follow the canonical mapping. The floating Kakao link uses `floating-kakao` without inventing a section.
+v16 click target: `nav-booking` means 메뉴(PC·폰)의 체험 예약 → 네이버 예약 이동, while `hero-booking`, `lesson-booking` and `booking-booking` mean outbound Naver booking clicks. All retain `booking_click`; none indicate a completed booking. FAQ keys and the twelve section keys follow the canonical mapping. The floating Kakao link uses `floating-kakao` without inventing a section.
