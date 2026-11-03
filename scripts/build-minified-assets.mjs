@@ -19,6 +19,7 @@ const cssSources = [
 ];
 
 try {
+  execFileSync(process.execPath, [path.join(scriptDir, 'check-font-coverage.mjs')], { stdio: 'inherit' });
   const cssBundle = cssSources
     .map((source) => readFileSync(path.join(rootDir, source), 'utf8'))
     .join('\n');

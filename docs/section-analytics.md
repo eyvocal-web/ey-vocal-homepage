@@ -17,3 +17,14 @@ The head contains a commented-out Clarity loader, with production/internal-devic
 Tests and captured payloads stay outside the repository in the handoff work/ folder. Supabase requests must always be intercepted in local browser tests. The live website must only be opened with `?ey_internal=1`.
 
 v16 click target: `nav-booking` means 메뉴(PC·폰)의 체험 예약 → 네이버 예약 이동, while `hero-booking`, `lesson-booking` and `booking-booking` mean outbound Naver booking clicks. All retain `booking_click`; none indicate a completed booking. FAQ keys and the twelve section keys follow the canonical mapping. The floating Kakao link uses `floating-kakao` without inventing a section.
+
+Conversion-flow additions (2026-11): existing event names, section keys and question/target identities remain unchanged. DOM section order is hero → lesson → reviews → numbers → gear → practice → process → faq → blog → location → booking → footer. The recorder continues to resolve centre-line ties by DOM order.
+
+- `bar-booking`: mobile fixed bar → Naver booking; `booking_click`, no section.
+- `bar-kakao`: mobile fixed bar → Kakao open chat; `kakao_click`, no section.
+- `lesson-kakao`: trial card in lesson → Kakao open chat; `kakao_click`, section `lesson`.
+- `faq-booking`: end of FAQ → Naver booking; `booking_click`, section `faq`.
+- `process-booking`: end of lesson process → Naver booking; `booking_click`, section `process`.
+- `faq-9`: 비용은 어떻게 되나요?; `faq_open`, section `faq`. Existing faq-1~8 stay attached to their original questions; display order is 7, 3, 6, 8, 5, 1, 4, 2, 9.
+
+Font validation: `node scripts/check-font-coverage.mjs` checks both HTML pages against the WOFF2 cmap before every asset build. No Python or runtime dependency is required by the check.
