@@ -457,7 +457,9 @@
       if (bar) bar.hidden = !phone.matches || visibleSections.size > 0;
     }
     update();
-    phone.addEventListener('change', update);
+    // Older Safari (iOS 13 and below) only has the legacy addListener API.
+    if (typeof phone.addEventListener === 'function') phone.addEventListener('change', update);
+    else if (typeof phone.addListener === 'function') phone.addListener(update);
     if (!window.IntersectionObserver) return;
     const observer = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
