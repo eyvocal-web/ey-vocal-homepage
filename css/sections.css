@@ -418,3 +418,60 @@
 }
 /* Expand menu hit areas to 44px without moving the approved text positions. */
 .ey-page .ey-nav>a:not([href="#booking"]){padding-inline:12px;margin-inline:-12px}
+
+/* Conversion flow: reuse the approved sage/oak surfaces and pill controls. */
+.ey-page [id] { scroll-margin-top: var(--nav-height) }
+.ey-page .hero-trial { margin-top: 16px; color: var(--text-2); font-size: 19px; line-height: 1.5 }
+.ey-page .trial-card { box-sizing: border-box; width: 100%; max-width: 640px; margin-top: 28px; padding: 28px; border-radius: var(--r-2xl); background: var(--surface); border: 1px solid var(--border) }
+.ey-page .trial-card h3 { font-size: 22px; line-height: 1.3; font-weight: 600 }
+.ey-page .trial-facts { margin-top: 16px; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 20px; font-size: 17px; line-height: 1.5 }
+.ey-page .trial-facts li:nth-child(n+3) { flex-basis: 100% }
+.ey-page .trial-facts li span { display: block; margin-top: 6px; font-size: 15px; color: var(--text-2) }
+.ey-page .trial-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 22px }
+.ey-page .section-cta { display: flex; justify-content: center; margin-top: 32px }
+.ey-page .review-more-wrap { display: flex; justify-content: center }
+.ey-page .review-more { display: none; cursor: pointer; font-family: inherit }
+.menu-line { transform-origin: 11px 11px; transition: transform var(--dur-base) var(--ease-out) }
+.nav__toggle[aria-expanded="true"] .menu-line-top { transform: rotate(45deg) translateY(4px) }
+.nav__toggle[aria-expanded="true"] .menu-line-bottom { transform: rotate(-45deg) translateY(-4px) }
+.nav-backdrop { position: fixed; inset: 0; z-index: 25; background: rgba(22,22,24,.4) }
+.nav-backdrop[hidden], .mobile-contact[hidden] { display: none !important }
+body.nav-open { overflow: hidden }
+body.nav-open .ey-page .header-0 { z-index: 30 }
+.mobile-contact { display: none }
+@media (min-width: 768px) {
+  .ey-page .header-0 { position: sticky; top: 0; z-index: 30; background: rgba(255,255,255,.88); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px) }
+  .ey-page .reviews-10 { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 16px 24px; align-items: start }
+  .ey-page .reviews-11, .ey-page .reviews-15, .ey-page .reviews-19 { display: contents }
+  .ey-page .reviews-12, .ey-page .reviews-16, .ey-page .reviews-20 { grid-row: 1 }
+  .ey-page .reviews-13, .ey-page .reviews-17, .ey-page .reviews-21 { grid-row: 2 }
+  .ey-page .reviews-14, .ey-page .reviews-18, .ey-page .reviews-22 { grid-row: 3 }
+  .ey-page .reviews-12, .ey-page .reviews-13, .ey-page .reviews-14 { grid-column: 1 }
+  .ey-page .reviews-16, .ey-page .reviews-17, .ey-page .reviews-18 { grid-column: 2 }
+  .ey-page .reviews-20, .ey-page .reviews-21, .ey-page .reviews-22 { grid-column: 3 }
+}
+@media (max-width: 767px) {
+  .ey-page { padding-bottom: calc(60px + env(safe-area-inset-bottom)) }
+  .ey-page .header-0 { position: relative; z-index: 30 }
+  .ey-page [id] { scroll-margin-top: 12px }
+  /* Keep anchor/scrollIntoView targets clear of the fixed contact bar. */
+  html { scroll-padding-bottom: calc(60px + env(safe-area-inset-bottom)) }
+  .ey-page .hero-trial { font-size: 16px; margin-top: 14px }
+  .ey-page .trial-card { padding: 22px 16px; margin-top: 24px }
+  .ey-page .trial-card h3 { font-size: 20px }
+  .ey-page .trial-facts { font-size: 16px }
+  .ey-page .reviews-collapsed .review-extra { display: none }
+  .ey-page .review-more:not([hidden]) { display: inline-flex; margin-top: 24px }
+  .kakao-launch { display: none !important }
+  .mobile-contact { position: fixed; bottom: 0; left: 0; right: 0; z-index: 24; box-sizing: border-box; min-height: calc(60px + env(safe-area-inset-bottom)); padding: 8px 12px calc(8px + env(safe-area-inset-bottom)); display: flex; gap: 10px; background: var(--surface); border-top: 1px solid var(--border) }
+  .mobile-contact a { display: inline-flex; flex: 1; align-items: center; justify-content: center; min-height: 44px; box-sizing: border-box; border-radius: var(--r-pill); font-size: 16px; line-height: 1.3; font-weight: 600; text-decoration: none; color: var(--primary); border: 1.5px solid var(--primary) }
+  .mobile-contact .contact-booking { background: var(--primary); color: var(--text-on-primary) }
+}
+@media (prefers-reduced-motion: reduce) {
+  .menu-line { transition: none !important }
+}
+/* Keep filled CTA labels readable while hovered, including the sticky header. */
+.ey-page .header-9:hover, .ey-page .header-19:hover,
+.ey-page .hero-6:hover, .ey-page .lesson-4:hover, .ey-page .booking-4:hover {
+  color: var(--text-on-primary); background: var(--primary-hover)
+}

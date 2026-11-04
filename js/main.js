@@ -156,6 +156,7 @@
     initNav();
     initSmoothScroll();
     initFloatingContact();
+    initReviewMore();
 
     var yearEl = document.getElementById('current-year');
     if (yearEl) yearEl.textContent = new Date().getFullYear();
@@ -320,7 +321,7 @@
         progressMarkers.style.cssText = 'position:absolute;top:0;left:0;width:1px;height:0;opacity:0;pointer-events:none';
         document.body.appendChild(progressMarkers);
       }
-      progressMarkers.replaceChildren();
+      while (progressMarkers.firstChild) progressMarkers.removeChild(progressMarkers.firstChild);
       const scrollable = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
       const step = scrollable / 100;
       // Contiguous 1%-bands cross a one-pixel viewport-top observation line.
@@ -364,7 +365,7 @@
       details.addEventListener('toggle', function () {
         const key = details.getAttribute('data-track');
         const section = sectionOf(details);
-        if (details.open && section && /^faq-[1-8]$/.test(key || '') && !faqs.has(key)) {
+        if (details.open && section && /^faq-[1-9]$/.test(key || '') && !faqs.has(key)) {
           faqs.add(key); persist(); logEvent('faq_open', section, {target: key});
         }
       });
@@ -377,8 +378,11 @@
     const menu = document.querySelector('.nav__mobile');
     if (!toggle || !menu) return;
     const links = Array.from(menu.querySelectorAll('a'));
+    const backdrop = document.querySelector('.nav-backdrop');
     function setOpen(open, returnFocus) {
       menu.hidden = !open;
+      if (backdrop) backdrop.hidden = !open;
+      document.body.classList.toggle('nav-open', open);
       toggle.setAttribute('aria-expanded', String(open));
       toggle.setAttribute('aria-label', open ? '메뉴 닫기' : '메뉴 열기');
       if (open && links[0]) links[0].focus();
@@ -421,20 +425,50 @@
     });
   }
 
+  function initReviewMore() {
+    const reviews = document.querySelector('.ey-reviews');
+    const more = document.querySelector('.review-more');
+    if (!reviews || !more) return;
+    reviews.classList.add('reviews-collapsed');
+    more.hidden = false;
+    more.addEventListener('click', function () {
+      reviews.classList.remove('reviews-collapsed');
+      more.setAttribute('aria-expanded', 'true');
+      const firstExtra = reviews.querySelector('.review-extra');
+      if (firstExtra) {
+        firstExtra.setAttribute('tabindex', '-1');
+        firstExtra.focus({preventScroll: true});
+      }
+      more.hidden = true;
+    });
+  }
+
   function initFloatingContact() {
     const floating = document.querySelector('.kakao-launch');
-    if (!floating) return;
+    const bar = document.querySelector('.mobile-contact');
+    if (!floating && !bar) return;
+    const phone = window.matchMedia('(max-width: 767px)');
     const contacts = Array.from(document.querySelectorAll('.ey-hero a[href^="https://open.kakao.com/"], .ey-booking a[href^="https://open.kakao.com/"]'));
-    if (!contacts.length || !window.IntersectionObserver) return;
-    const visible = new Set();
-    floating.hidden = true;
+    const sections = Array.from(document.querySelectorAll('.ey-hero, .ey-booking'));
+    const visibleContacts = new Set(contacts);
+    const visibleSections = new Set(sections);
+    function update() {
+      if (floating) floating.hidden = phone.matches || visibleContacts.size > 0;
+      if (bar) bar.hidden = !phone.matches || visibleSections.size > 0;
+    }
+    update();
+    // Older Safari (iOS 13 and below) only has the legacy addListener API.
+    if (typeof phone.addEventListener === 'function') phone.addEventListener('change', update);
+    else if (typeof phone.addListener === 'function') phone.addListener(update);
+    if (!window.IntersectionObserver) return;
     const observer = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
+        const visible = contacts.indexOf(entry.target) >= 0 ? visibleContacts : visibleSections;
         if (entry.isIntersecting) visible.add(entry.target);
         else visible.delete(entry.target);
       });
-      floating.hidden = visible.size > 0;
+      update();
     });
-    contacts.forEach(function (contact) { observer.observe(contact); });
+    contacts.concat(sections).forEach(function (contact) { observer.observe(contact); });
   }
 })();
