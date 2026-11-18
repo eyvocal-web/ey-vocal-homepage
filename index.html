@@ -28,7 +28,8 @@
   <meta name="google-site-verification" content="KOnLuT7sUt6jHoa1Vu4Du2eyJ5z4YwFxqGDX5mAAjcg" />
 <link href="https://www.eyvocal.com/" rel="canonical"/>
 <link as="font" crossorigin="" href="assets/fonts/PretendardVariable.subset.woff2" rel="preload" type="font/woff2"/>
-<link as="image" fetchpriority="high" imagesizes="(max-width: 767px) 100vw, 62vw" imagesrcset="assets/images/studio/studio-vocal-mic-640.webp 640w, assets/images/studio/studio-vocal-mic-1280.webp 1280w" rel="preload" type="image/webp"/>
+<link rel="preload" as="image" media="(max-width: 767px)" href="assets/images/studio/studio-vocal-mic-mobile.webp" type="image/webp" fetchpriority="high"/>
+<link rel="preload" as="image" media="(min-width: 768px)" imagesizes="62vw" imagesrcset="assets/images/studio/studio-vocal-mic-640.webp 640w, assets/images/studio/studio-vocal-mic-1280.webp 1280w" type="image/webp" fetchpriority="high"/>
 <!-- 공유 카드에서는 클릭 전 신뢰를 만드는 역할이 커서, 제목·설명·이미지를 랜딩 핵심 메시지와 맞춥니다. -->
 <meta content="website" property="og:type"/>
 <meta content="EY보컬스튜디오 | 이천 1:1 보컬 레슨 · 무료 체험" property="og:title"/>
@@ -208,6 +209,7 @@
 <section aria-labelledby="hero-title" class="ey-hero hero-0" data-track-section="hero">
   <figure class="hero-studio">
     <picture>
+      <source media="(max-width: 767px)" srcset="assets/images/studio/studio-vocal-mic-mobile.webp" width="800" height="656"/>
       <img src="assets/images/studio/studio-vocal-mic-640.webp"
         srcset="assets/images/studio/studio-vocal-mic-640.webp 640w, assets/images/studio/studio-vocal-mic-1280.webp 1280w"
         sizes="(max-width: 767px) 100vw, 62vw" alt="오후 햇빛이 비치는 EY보컬스튜디오 레슨실의 녹음 마이크"
