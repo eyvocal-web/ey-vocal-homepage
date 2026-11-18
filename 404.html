@@ -1,85 +1,32 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>페이지를 찾을 수 없습니다 | EY보컬스튜디오</title>
-  <meta name="robots" content="noindex">
-  <link rel="stylesheet" href="/css/app.min.css">
-  <link rel="icon" type="image/png" href="/assets/brand/logo-icon-black.png">
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="robots" content="noindex"/>
+  <title>페이지를 찾을 수 없어요 | EY보컬스튜디오</title>
+  <link rel="stylesheet" href="/css/app.min.css"/>
+  <link rel="icon" href="/assets/brand/logo-icon-black.png" type="image/png"/>
   <style>
-    .error-page {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .error-page__content {
-      width: min(100%, 42rem);
-      padding: var(--sp-12);
-      border: 1px solid var(--border);
-      border-radius: var(--r-xl);
-      background: var(--surface);
-      box-shadow: var(--shadow-md);
-      text-align: center;
-    }
-
-    .error-page__logo {
-      width: min(14rem, 52vw);
-      height: auto;
-      margin: 0 auto var(--sp-8);
-    }
-
-    .error-page__actions {
-      display: flex;
-      flex-direction: column;
-      gap: var(--sp-3);
-      align-items: center;
-      margin-top: var(--sp-8);
-    }
-
-    .error-page__caption {
-      margin-top: var(--sp-6);
-      font-size: var(--fs-body-sm);
-      color: var(--text-2);
-      line-height: var(--lh-body);
-    }
-
-    @media (min-width: 640px) {
-      .error-page__actions {
-        flex-direction: row;
-        justify-content: center;
-      }
-    }
+    .error-page { min-height: 100vh; min-height: 100svh; display: grid; align-content: center; justify-items: start; }
+    .error-page__inner { width: min(100% - 40px, 36rem); margin-inline: auto; padding-block: 40px; }
+    .error-page img { width: 110px; height: auto; margin-bottom: 42px; }
+    .error-page__actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
   </style>
 </head>
 <body>
-  <a href="#main" class="skip-link">본문 바로가기</a>
-
-  <main id="main" class="section section--dark error-page">
-    <div class="container">
-      <div class="error-page__content">
-        <img src="/assets/brand/logo-horizontal-black.png" alt="EY보컬스튜디오" class="error-page__logo" width="871" height="225">
-        <span class="section__label">404</span>
-        <h1 class="section__title"><span class="wrap-unit">찾으시는 페이지를 바로</span> <span class="wrap-unit">열어 드리지 못했습니다</span></h1>
-        <p class="section__subtitle text-center">
-          <span class="wrap-unit"><span class="wrap-unit">주소가 바뀌었거나</span> <span class="wrap-unit">연결이 끊어진 페이지일 수 있습니다.</span></span>
-          <span class="wrap-unit"><span class="wrap-unit">아래 버튼으로 홈으로 돌아가시거나,</span> <span class="wrap-unit">카카오톡 상담에서</span> <span class="wrap-unit">바로 안내받으실 수 있습니다.</span></span>
-        </p>
-
-        <div class="error-page__actions">
-          <a href="/" class="btn btn--primary">홈으로 돌아가기</a>
-          <a href="https://open.kakao.com/o/seso1YLg" class="btn btn--secondary" target="_blank" rel="noopener noreferrer">카카오톡 상담하기</a>
-        </div>
-
-        <p class="error-page__caption">
-          레슨 문의와 위치 안내는 홈 화면 하단에서도 바로 확인하실 수 있습니다.
-        </p>
-      </div>
+  <main class="error-page">
+    <div class="error-page__inner">
+      <a href="/" aria-label="EY보컬스튜디오 홈"><img width="320" height="83" src="/assets/brand/logo-horizontal-black-320.webp" alt="EY보컬스튜디오"/></a>
+      <p class="section__label">404</p>
+      <h1 class="section__title">페이지를 찾을 수 없어요</h1>
+      <p class="section__subtitle">주소가 바뀌었거나 잘못 입력되었어요. 홈에서 수업을 살펴보거나 예약·문의로 바로 이동하세요.</p>
+      <nav class="error-page__actions" aria-label="다음으로 이동">
+        <a href="/" class="btn btn--primary">홈으로 돌아가기</a>
+        <a href="/#booking" class="btn btn--secondary">예약·문의</a>
+      </nav>
     </div>
   </main>
-  <a href="https://open.kakao.com/o/seso1YLg" class="kakao-launch" target="_blank" rel="noopener noreferrer">카카오톡 상담</a>
   <script src="/js/app.min.js" defer></script>
 </body>
 </html>
