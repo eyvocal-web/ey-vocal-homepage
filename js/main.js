@@ -154,7 +154,6 @@
       el.setAttribute('data-clarity-mask', 'true');
     });
     initNav();
-    initSmoothScroll();
     initFloatingContact();
     initReviewMore();
 
@@ -377,98 +376,98 @@
     const toggle = document.querySelector('.nav__toggle');
     const menu = document.querySelector('.nav__mobile');
     if (!toggle || !menu) return;
-    const links = Array.from(menu.querySelectorAll('a'));
+    const links = Array.from(menu.querySelectorAll('a[href]'));
+    const header = toggle.closest('header');
     const backdrop = document.querySelector('.nav-backdrop');
+    const content = document.querySelectorAll('main, footer');
+
     function setOpen(open, returnFocus) {
       menu.hidden = !open;
       if (backdrop) backdrop.hidden = !open;
+      content.forEach(function (element) { element.inert = open; });
       document.body.classList.toggle('nav-open', open);
       toggle.setAttribute('aria-expanded', String(open));
       toggle.setAttribute('aria-label', open ? '메뉴 닫기' : '메뉴 열기');
-      if (open && links[0]) links[0].focus();
-      if (!open && returnFocus) toggle.focus();
+      if (open && links.length) links[0].focus({preventScroll: true});
+      if (!open && returnFocus) toggle.focus({preventScroll: true});
     }
-    toggle.addEventListener('click', function () { setOpen(menu.hidden, false); });
-    links.forEach(function (link) { link.addEventListener('click', function () { setOpen(false, false); }); });
-    document.addEventListener('keydown', function (event) {
-      if (menu.hidden) return;
-      if (event.key === 'Escape') { event.preventDefault(); setOpen(false, true); }
-      if (event.key === 'Tab') {
-        const controls = [toggle].concat(links);
-        const index = controls.indexOf(document.activeElement);
-        if (event.shiftKey && index === 0) { event.preventDefault(); links[links.length - 1].focus(); }
-        else if (!event.shiftKey && index === controls.length - 1) { event.preventDefault(); toggle.focus(); }
+    toggle.addEventListener('click', function () { setOpen(menu.hidden, !menu.hidden); });
+    header.addEventListener('click', function (event) {
+      if (!menu.hidden && event.target.closest('a[href]') &&
+          !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey) {
+        // Unlock the destination before the browser follows its native fragment link.
+        setOpen(false, false);
       }
     });
-    document.addEventListener('click', function (event) {
-      if (!menu.hidden && !event.target.closest('.ey-burger')) setOpen(false, true);
-    });
-    window.matchMedia('(min-width: 1069px)').addEventListener('change', function (event) {
-      if (event.matches) setOpen(false, false);
-    });
-  }
-
-  function initSmoothScroll() {
-    // Native fragment navigation preserves bookmarks without motion or header offsets.
-    document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
-      anchor.addEventListener('click', function (event) {
-        const hash = anchor.getAttribute('href');
-        if (hash.length < 2) return;
-        const target = document.getElementById(hash.slice(1));
-        if (!target) return;
+    if (backdrop) backdrop.addEventListener('click', function () { setOpen(false, true); });
+    document.addEventListener('keydown', function (event) {
+      if (menu.hidden) return;
+      if (event.key === 'Escape') {
         event.preventDefault();
-        history.replaceState(null, '', hash);
-        target.scrollIntoView({behavior: 'instant', block: 'start'});
-        if (!target.hasAttribute('tabindex')) target.setAttribute('tabindex', '-1');
-        target.focus({preventScroll: true});
-      });
+        setOpen(false, true);
+      } else if (event.key === 'Tab' && links.length) {
+        const last = links[links.length - 1];
+        if (event.shiftKey && document.activeElement === toggle) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          toggle.focus();
+        }
+      }
     });
+    function closeMenu() {
+      if (!menu.hidden) setOpen(false, false);
+    }
+    const desktop = window.matchMedia('(min-width: 1069px)');
+    function closeOnDesktop(event) {
+      if (event.matches) closeMenu();
+    }
+    if (desktop.addEventListener) desktop.addEventListener('change', closeOnDesktop);
+    else desktop.addListener(closeOnDesktop);
+    window.addEventListener('hashchange', closeMenu);
+    window.addEventListener('pagehide', closeMenu);
   }
 
   function initReviewMore() {
     const reviews = document.querySelector('.ey-reviews');
     const more = document.querySelector('.review-more');
     if (!reviews || !more) return;
+    const collapsedLabel = more.textContent;
     reviews.classList.add('reviews-collapsed');
     more.hidden = false;
     more.addEventListener('click', function () {
-      reviews.classList.remove('reviews-collapsed');
-      more.setAttribute('aria-expanded', 'true');
-      const firstExtra = reviews.querySelector('.review-extra');
-      if (firstExtra) {
-        firstExtra.setAttribute('tabindex', '-1');
-        firstExtra.focus({preventScroll: true});
-      }
-      more.hidden = true;
+      const collapsed = reviews.classList.toggle('reviews-collapsed');
+      more.setAttribute('aria-expanded', String(!collapsed));
+      more.textContent = collapsed ? collapsedLabel : '추가 리뷰 접기';
     });
   }
 
   function initFloatingContact() {
-    const floating = document.querySelector('.kakao-launch');
-    const bar = document.querySelector('.mobile-contact');
-    if (!floating && !bar) return;
+    const controls = document.querySelectorAll('.kakao-launch, .mobile-contact');
+    const actions = document.querySelectorAll('[data-contact-actions]');
+    if (!controls.length || !actions.length || !window.IntersectionObserver) return;
+
     const phone = window.matchMedia('(max-width: 767px)');
-    const contacts = Array.from(document.querySelectorAll('.ey-hero a[href^="https://open.kakao.com/"], .ey-booking a[href^="https://open.kakao.com/"]'));
-    const sections = Array.from(document.querySelectorAll('.ey-hero, .ey-booking'));
-    const visibleContacts = new Set(contacts);
-    const visibleSections = new Set(sections);
-    function update() {
-      if (floating) floating.hidden = phone.matches || visibleContacts.size > 0;
-      if (bar) bar.hidden = !phone.matches || visibleSections.size > 0;
+    const header = document.querySelector('.header-0');
+    let observer;
+    function observeActions() {
+      if (observer) observer.disconnect();
+      const visible = new Set();
+      // Leave room for the sticky desktop header or the phone's fixed action bar.
+      const topInset = !phone.matches && header ? header.offsetHeight : 0;
+      const bottomInset = phone.matches ? 64 : 0;
+      observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting && entry.intersectionRatio >= 0.5) visible.add(entry.target);
+          else visible.delete(entry.target);
+        });
+        controls.forEach(function (control) { control.hidden = visible.size > 0; });
+      }, {threshold: [0, 0.5], rootMargin: '-' + topInset + 'px 0px -' + bottomInset + 'px 0px'});
+      actions.forEach(function (group) { observer.observe(group); });
     }
-    update();
-    // Older Safari (iOS 13 and below) only has the legacy addListener API.
-    if (typeof phone.addEventListener === 'function') phone.addEventListener('change', update);
-    else if (typeof phone.addListener === 'function') phone.addListener(update);
-    if (!window.IntersectionObserver) return;
-    const observer = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        const visible = contacts.indexOf(entry.target) >= 0 ? visibleContacts : visibleSections;
-        if (entry.isIntersecting) visible.add(entry.target);
-        else visible.delete(entry.target);
-      });
-      update();
-    });
-    contacts.concat(sections).forEach(function (contact) { observer.observe(contact); });
+    observeActions();
+    if (phone.addEventListener) phone.addEventListener('change', observeActions);
+    else phone.addListener(observeActions);
   }
 })();
