@@ -437,12 +437,17 @@
 .nav-backdrop { position: fixed; inset: 0; z-index: 25; background: rgba(22,22,24,.4) }
 .nav-backdrop[hidden], .mobile-contact[hidden] { display: none !important }
 body.nav-open { overflow: hidden }
+body.nav-open .mobile-contact, body.nav-open .kakao-launch { display: none }
+.ey-page .nav__mobile { max-height: calc(100vh - 56px); max-height: calc(100dvh - 56px); overflow-y: auto }
+.ey-page .footer-8 a { color: inherit }
 body.nav-open .ey-page .header-0 { z-index: 30 }
 .mobile-contact { display: none }
 @media (min-width: 768px) {
   .ey-page .header-0 { position: sticky; top: 0; z-index: 30; background: rgba(255,255,255,.88); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px) }
   .ey-page .reviews-10 { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 16px 24px; align-items: start }
   .ey-page .reviews-11, .ey-page .reviews-15, .ey-page .reviews-19 { display: contents }
+  .ey-page #review-additional { display: contents }
+  .ey-page .review-more-wrap { display: none }
   .ey-page .reviews-12, .ey-page .reviews-16, .ey-page .reviews-20 { grid-row: 1 }
   .ey-page .reviews-13, .ey-page .reviews-17, .ey-page .reviews-21 { grid-row: 2 }
   .ey-page .reviews-14, .ey-page .reviews-18, .ey-page .reviews-22 { grid-row: 3 }
@@ -460,7 +465,9 @@ body.nav-open .ey-page .header-0 { z-index: 30 }
   .ey-page .trial-card { padding: 22px 16px; margin-top: 24px }
   .ey-page .trial-card h3 { font-size: 20px }
   .ey-page .trial-facts { font-size: 16px }
-  .ey-page .reviews-collapsed .review-extra { display: none }
+  .ey-page .reviews-collapsed #review-additional { display: none }
+  .ey-page #review-additional, .ey-page .review-more-wrap { flex-basis: 100% }
+  .ey-page #review-additional { width: 100%; margin-top: 12px }
   .ey-page .review-more:not([hidden]) { display: inline-flex; margin-top: 24px }
   .kakao-launch { display: none !important }
   .mobile-contact { position: fixed; bottom: 0; left: 0; right: 0; z-index: 24; box-sizing: border-box; min-height: calc(60px + env(safe-area-inset-bottom)); padding: 8px 12px calc(8px + env(safe-area-inset-bottom)); display: flex; gap: 10px; background: var(--surface); border-top: 1px solid var(--border) }
@@ -474,4 +481,16 @@ body.nav-open .ey-page .header-0 { z-index: 30 }
 .ey-page .header-9:hover, .ey-page .header-19:hover,
 .ey-page .hero-6:hover, .ey-page .lesson-4:hover, .ey-page .booking-4:hover {
   color: var(--text-on-primary); background: var(--primary-hover)
+}
+
+
+/* Keep the existing navigation reachable when JavaScript is disabled. */
+@media (scripting: none) and (max-width: 1068px) {
+  .ey-page .ey-burger { display: none }
+  .ey-page .header-0 { height: auto; flex-wrap: wrap }
+  .ey-page .ey-nav {
+    display: flex !important; position: static; flex: 1 1 100%; width: auto;
+    flex-flow: row wrap; gap: 4px 12px; padding: 0; box-shadow: none;
+  }
+  .ey-page .ey-nav > a { min-height: 44px; margin: 0; padding-inline: 6px }
 }
