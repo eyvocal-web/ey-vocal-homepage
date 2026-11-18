@@ -29,9 +29,9 @@
   --text: var(--ey-felt-900);
   --text-2: var(--ey-felt-600);
   --text-on-primary: #FFFFFF;
-  --primary: var(--ey-sage-600);
-  --primary-hover: var(--ey-sage-700);
-  --primary-soft: var(--ey-sage-100);
+  --primary: #254bd7;
+  --primary-hover: #1d3db3;
+  --primary-soft: #eef1fb;
   --accent: var(--ey-oak-400);
   --accent-text: var(--ey-oak-600);
   --accent-soft: var(--ey-oak-100);
